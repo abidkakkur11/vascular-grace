@@ -1,0 +1,51 @@
+{
+    "key": "group_template_testimonials",
+    "title": "Page — Testimonials Template Fields",
+    "fields": [
+        {
+            "key": "field_testimonials_hero_title",
+            "label": "Hero Title (HTML allowed)",
+            "name": "testimonials_hero_title",
+            "type": "textarea",
+            "rows": 2,
+            "default_value": "What patients say\nabout <span class=\"hero-title-accent\">Dr. Raju.<\/span>"
+        },
+        {
+            "key": "field_testimonials_hero_subtitle",
+            "label": "Hero Subtitle",
+            "name": "testimonials_hero_subtitle",
+            "type": "text",
+            "default_value": "Real experiences from patients treated for varicose veins, diabetic foot, PAD, and complex vascular conditions."
+        },
+        {
+            "key": "field_testimonials_section_heading",
+            "label": "Section Heading",
+            "name": "testimonials_section_heading",
+            "type": "text",
+            "default_value": "Care that patients remember for the right reasons."
+        },
+        {
+            "key": "field_testimonials_shortcode_page",
+            "label": "Trustindex / Review Widget Shortcode",
+            "name": "testimonials_shortcode",
+            "type": "text",
+            "placeholder": "[trustindex ...] or [review-widget ...]",
+            "instructions": "Paste the Trustindex shortcode here after installing and connecting the plugin to Google My Business. Leave blank to display static testimonial cards."
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "page-templates/template-testimonials.php"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "active": true
+}

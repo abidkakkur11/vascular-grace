@@ -1,0 +1,59 @@
+{
+    "key": "group_template_contact",
+    "title": "Page — Contact Template Fields",
+    "fields": [
+        {
+            "key": "field_contact_hero_title",
+            "label": "Hero Title (HTML allowed)",
+            "name": "contact_hero_title",
+            "type": "textarea",
+            "rows": 2,
+            "default_value": "Book a <span class=\"hero-title-accent\">consultation.<\/span>"
+        },
+        {
+            "key": "field_contact_hero_subtitle",
+            "label": "Hero Subtitle",
+            "name": "contact_hero_subtitle",
+            "type": "text",
+            "default_value": "Visit Dr. Raju at Yashoda Hospitals, Hitec City — or book an online consultation from anywhere."
+        },
+        {
+            "key": "field_contact_form_title",
+            "label": "Form Title",
+            "name": "contact_form_title",
+            "type": "text",
+            "default_value": "Request an Appointment"
+        },
+        {
+            "key": "field_contact_form_desc",
+            "label": "Form Description",
+            "name": "contact_form_desc",
+            "type": "textarea",
+            "rows": 2,
+            "default_value": "Share your details below and Dr. Raju's team will contact you shortly to confirm your consultation slot."
+        },
+        {
+            "key": "field_contact_form_shortcode",
+            "label": "Appointment Form Shortcode",
+            "name": "contact_form_shortcode",
+            "type": "text",
+            "placeholder": "[wpforms id=\"1\"] or [contact-form-7 id=\"1\"] etc.",
+            "instructions": "Paste your form plugin shortcode here. Works with WPForms, Contact Form 7, Gravity Forms, or any shortcode-based form plugin. Leave blank to show the static fallback form."
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "page-templates/template-contact.php"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "active": true
+}

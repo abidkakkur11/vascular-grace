@@ -1,0 +1,281 @@
+﻿{
+    "key": "group_template_about",
+    "title": "Page — About Template Fields",
+    "fields": [
+        {
+            "key": "field_about_tab_hero",
+            "label": "Hero Section",
+            "name": "",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_about_hero_title",
+            "label": "Hero Title (HTML allowed)",
+            "name": "about_hero_title",
+            "type": "textarea",
+            "rows": 3,
+            "default_value": "A vascular surgeon devoted\nto precision and quiet\n<span class=\"hero-title-accent\">compassion.</span>",
+            "instructions": "Supports span tags for accent colour. Use newlines for line breaks."
+        },
+        {
+            "key": "field_about_hero_subtitle",
+            "label": "Hero Subtitle",
+            "name": "about_hero_subtitle",
+            "type": "textarea",
+            "rows": 3,
+            "default_value": "MBBS, MS (General Surgery), DNB (Vascular Surgery) · Sr. Consultant Vascular & Endovascular Surgeon and Clinical Director at Yashoda Hospitals, Hitec City."
+        },
+        {
+            "key": "field_about_tab_intro",
+            "label": "Intro & Credentials",
+            "name": "",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_about_intro_lead1",
+            "label": "Intro Paragraph 1",
+            "name": "about_intro_lead1",
+            "type": "wysiwyg",
+            "toolbar": "basic",
+            "media_upload": 0,
+            "default_value": ""
+        },
+        {
+            "key": "field_about_intro_lead2",
+            "label": "Intro Paragraph 2",
+            "name": "about_intro_lead2",
+            "type": "wysiwyg",
+            "toolbar": "basic",
+            "media_upload": 0,
+            "default_value": ""
+        },
+        {
+            "key": "field_about_credentials",
+            "label": "Credential Cards",
+            "name": "credentials",
+            "type": "repeater",
+            "min": 1,
+            "max": 6,
+            "layout": "table",
+            "button_label": "Add Credential",
+            "sub_fields": [
+                {
+                    "key": "field_cred_title",
+                    "label": "Title",
+                    "name": "cred_title",
+                    "type": "text",
+                    "placeholder": "MBBS · MS · DNB"
+                },
+                {
+                    "key": "field_cred_sub",
+                    "label": "Subtitle",
+                    "name": "cred_sub",
+                    "type": "text",
+                    "placeholder": "Vascular Surgery"
+                },
+                {
+                    "key": "field_cred_color",
+                    "label": "Color Class",
+                    "name": "cred_color",
+                    "type": "select",
+                    "choices": {
+                        "text-blue": "Blue",
+                        "text-crimson": "Crimson"
+                    },
+                    "default_value": "text-blue"
+                }
+            ]
+        },
+        {
+            "key": "field_about_tab_education",
+            "label": "Education",
+            "name": "",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_about_education",
+            "label": "Education Entries",
+            "name": "education",
+            "type": "repeater",
+            "min": 1,
+            "max": 10,
+            "layout": "block",
+            "button_label": "Add Education Entry",
+            "sub_fields": [
+                {
+                    "key": "field_edu_year",
+                    "label": "Year / Period",
+                    "name": "edu_year",
+                    "type": "text",
+                    "placeholder": "2004 – 2010"
+                },
+                {
+                    "key": "field_edu_degree",
+                    "label": "Degree",
+                    "name": "edu_degree",
+                    "type": "text",
+                    "placeholder": "MBBS"
+                },
+                {
+                    "key": "field_edu_institution",
+                    "label": "Institution",
+                    "name": "edu_institution",
+                    "type": "text",
+                    "placeholder": "Dr. NTR University of Health Sciences"
+                }
+            ]
+        },
+        {
+            "key": "field_about_tab_timeline",
+            "label": "Professional Timeline",
+            "name": "",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_about_professional_timeline",
+            "label": "Professional Timeline",
+            "name": "professional_timeline",
+            "type": "repeater",
+            "min": 1,
+            "max": 20,
+            "layout": "block",
+            "button_label": "Add Timeline Entry",
+            "sub_fields": [
+                {
+                    "key": "field_tl_period",
+                    "label": "Period",
+                    "name": "tl_period",
+                    "type": "text",
+                    "placeholder": "Aug 2022 – Present"
+                },
+                {
+                    "key": "field_tl_role",
+                    "label": "Role / Title",
+                    "name": "tl_role",
+                    "type": "text",
+                    "placeholder": "Senior Consultant Vascular & Endovascular Surgeon"
+                },
+                {
+                    "key": "field_tl_place",
+                    "label": "Hospital / Institution",
+                    "name": "tl_place",
+                    "type": "text",
+                    "placeholder": "Yashoda Hospitals, Hitec City"
+                },
+                {
+                    "key": "field_tl_side",
+                    "label": "Timeline Side",
+                    "name": "tl_side",
+                    "type": "select",
+                    "choices": {
+                        "left": "Left",
+                        "right": "Right"
+                    },
+                    "default_value": "left"
+                },
+                {
+                    "key": "field_tl_current",
+                    "label": "Current Position?",
+                    "name": "tl_current",
+                    "type": "true_false",
+                    "ui": 1,
+                    "default_value": 0
+                }
+            ]
+        },
+        {
+            "key": "field_about_tab_publications",
+            "label": "Publications",
+            "name": "",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_about_publications",
+            "label": "Publications",
+            "name": "publications",
+            "type": "repeater",
+            "min": 0,
+            "max": 20,
+            "layout": "block",
+            "button_label": "Add Publication",
+            "sub_fields": [
+                {
+                    "key": "field_pub_type",
+                    "label": "Type / Journal",
+                    "name": "pub_type",
+                    "type": "text",
+                    "placeholder": "Thesis"
+                },
+                {
+                    "key": "field_pub_title",
+                    "label": "Title",
+                    "name": "pub_title",
+                    "type": "textarea",
+                    "rows": 2,
+                    "placeholder": "Publication title"
+                }
+            ]
+        },
+        {
+            "key": "field_about_tab_philosophy",
+            "label": "Philosophy & Stats",
+            "name": "",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_about_philosophy_quote",
+            "label": "Philosophy Quote",
+            "name": "philosophy_quote",
+            "type": "textarea",
+            "rows": 4,
+            "default_value": "\"Vascular care is at its best when it is precise, gentle and clearly understood. Every patient deserves a diagnosis they trust and a treatment plan built around their life — not just their disease.\""
+        },
+        {
+            "key": "field_about_stats",
+            "label": "Statistics",
+            "name": "stats",
+            "type": "repeater",
+            "min": 1,
+            "max": 6,
+            "layout": "table",
+            "button_label": "Add Stat",
+            "sub_fields": [
+                {
+                    "key": "field_about_stat_number",
+                    "label": "Number",
+                    "name": "stat_number",
+                    "type": "text",
+                    "placeholder": "16+"
+                },
+                {
+                    "key": "field_about_stat_label",
+                    "label": "Label",
+                    "name": "stat_label",
+                    "type": "text",
+                    "placeholder": "Years Experience"
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "page-templates/template-about.php"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "active": true
+}

@@ -1,0 +1,280 @@
+{
+    "key": "group_template_home",
+    "title": "Page — Home Template Fields",
+    "fields": [
+        {
+            "key": "field_home_tab_hero",
+            "label": "Hero Section",
+            "name": "",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_hero_subtitle",
+            "label": "Hero Subtitle Label",
+            "name": "hero_subtitle",
+            "type": "text",
+            "default_value": "DEPARTMENT"
+        },
+        {
+            "key": "field_hero_title",
+            "label": "Hero Title (HTML allowed)",
+            "name": "hero_title",
+            "type": "textarea",
+            "rows": 3,
+            "default_value": "Vascular <span class=\"text-crimson italic amp\">&amp;<\/span> Endovascular<br>\n<span class=\"text-blue highlight\">Surgery.<\/span>",
+            "instructions": "Supports limited HTML (span, br). Keep existing class names."
+        },
+        {
+            "key": "field_hero_desc",
+            "label": "Hero Description",
+            "name": "hero_desc",
+            "type": "textarea",
+            "rows": 4,
+            "default_value": "From varicose veins to complex aortic aneurysms — precision care for the arteries, veins and lymphatics that keep you moving. Trained in both open and endovascular technique, chosen because the vessel decides, not the surgeon."
+        },
+        {
+            "key": "field_hero_doctor_image",
+            "label": "Hero — Doctor Portrait Image",
+            "name": "hero_doctor_image",
+            "type": "image",
+            "return_format": "array",
+            "preview_size": "medium",
+            "instructions": "Transparent PNG preferred. Leave blank to use bundled default image."
+        },
+        {
+            "key": "field_hero_vascular_image",
+            "label": "Hero — Vascular System Background Image",
+            "name": "hero_vascular_image",
+            "type": "image",
+            "return_format": "array",
+            "preview_size": "medium",
+            "instructions": "Background decorative image. Leave blank to use bundled default."
+        },
+        {
+            "key": "field_home_tab_about",
+            "label": "About Section",
+            "name": "",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_about_section_title",
+            "label": "About Section Title",
+            "name": "about_section_title",
+            "type": "text",
+            "default_value": "A vascular specialist committed to precision and compassion."
+        },
+        {
+            "key": "field_about_section_desc",
+            "label": "About Section Description",
+            "name": "about_section_desc",
+            "type": "textarea",
+            "rows": 4,
+            "default_value": "Dr. S Srikanth Raju is a Senior Consultant Vascular & Endovascular Surgeon and Clinical Director at Yashoda Hospitals, Hitec City. With 16+ years of experience, he is one of India's few vascular surgeons trained in both open and endovascular procedures."
+        },
+        {
+            "key": "field_about_cta_url",
+            "label": "About Section CTA URL",
+            "name": "about_cta_url",
+            "type": "url",
+            "default_value": "/about/"
+        },
+        {
+            "key": "field_exp_badge_years",
+            "label": "Experience Badge — Years",
+            "name": "exp_badge_years",
+            "type": "text",
+            "default_value": "16+"
+        },
+        {
+            "key": "field_exp_badge_label",
+            "label": "Experience Badge — Label",
+            "name": "exp_badge_label",
+            "type": "text",
+            "default_value": "CLINICAL PRACTICE"
+        },
+        {
+            "key": "field_home_tab_services",
+            "label": "Services Section",
+            "name": "",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_services_section_title",
+            "label": "Services Section Title",
+            "name": "services_section_title",
+            "type": "text",
+            "default_value": "Advanced vascular treatments, tailored to you."
+        },
+        {
+            "key": "field_services_section_desc",
+            "label": "Services Section Description",
+            "name": "services_section_desc",
+            "type": "textarea",
+            "rows": 3,
+            "default_value": "From varicose veins to complex arterial disease — modern, minimally invasive care with faster recovery and lasting results."
+        },
+        {
+            "key": "field_home_tab_stats",
+            "label": "Stats Section",
+            "name": "",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_stats",
+            "label": "Statistics",
+            "name": "stats",
+            "type": "repeater",
+            "min": 1,
+            "max": 6,
+            "layout": "table",
+            "button_label": "Add Stat",
+            "sub_fields": [
+                {
+                    "key": "field_stat_number",
+                    "label": "Number",
+                    "name": "stat_number",
+                    "type": "text",
+                    "placeholder": "16+"
+                },
+                {
+                    "key": "field_stat_label",
+                    "label": "Label",
+                    "name": "stat_label",
+                    "type": "text",
+                    "placeholder": "YEARS EXPERIENCE"
+                }
+            ]
+        },
+        {
+            "key": "field_home_tab_journey",
+            "label": "Treatment Journey",
+            "name": "",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_journey_title",
+            "label": "Journey Section Title",
+            "name": "journey_title",
+            "type": "text",
+            "default_value": "A calm, deliberate process — designed around you."
+        },
+        {
+            "key": "field_journey_steps",
+            "label": "Journey Steps",
+            "name": "journey_steps",
+            "type": "repeater",
+            "min": 1,
+            "max": 8,
+            "layout": "table",
+            "button_label": "Add Step",
+            "sub_fields": [
+                {
+                    "key": "field_step_title",
+                    "label": "Step Title",
+                    "name": "step_title",
+                    "type": "text",
+                    "placeholder": "Consultation"
+                },
+                {
+                    "key": "field_step_text",
+                    "label": "Step Description",
+                    "name": "step_text",
+                    "type": "textarea",
+                    "rows": 2,
+                    "placeholder": "A detailed discussion of your symptoms, history and concerns."
+                }
+            ]
+        },
+        {
+            "key": "field_home_tab_testimonials",
+            "label": "Testimonials",
+            "name": "",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_testimonials_heading",
+            "label": "Testimonials Section Heading",
+            "name": "testimonials_heading",
+            "type": "text",
+            "default_value": "Care that patients remember for the right reasons."
+        },
+        {
+            "key": "field_testimonials_shortcode",
+            "label": "Testimonials / Review Widget Shortcode",
+            "name": "testimonials_shortcode",
+            "type": "text",
+            "placeholder": "[trustindex ...]",
+            "instructions": "Paste the Trustindex (or other review widget) shortcode here. When filled, this replaces the static testimonial cards. Leave blank to show static cards."
+        },
+        {
+            "key": "field_home_tab_faqs",
+            "label": "FAQ Section",
+            "name": "",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_faq_title",
+            "label": "FAQ Section Title",
+            "name": "faq_title",
+            "type": "text",
+            "default_value": "Answers to what patients ask most."
+        },
+        {
+            "key": "field_faq_desc",
+            "label": "FAQ Section Description",
+            "name": "faq_desc",
+            "type": "textarea",
+            "rows": 3,
+            "default_value": "Common questions about vascular procedures, recovery, and consultations."
+        },
+        {
+            "key": "field_faqs",
+            "label": "FAQ Items",
+            "name": "faqs",
+            "type": "repeater",
+            "min": 0,
+            "max": 20,
+            "layout": "block",
+            "button_label": "Add FAQ",
+            "sub_fields": [
+                {
+                    "key": "field_faq_question",
+                    "label": "Question",
+                    "name": "question",
+                    "type": "text",
+                    "placeholder": "Is laser treatment for varicose veins painful?"
+                },
+                {
+                    "key": "field_faq_answer",
+                    "label": "Answer",
+                    "name": "answer",
+                    "type": "wysiwyg",
+                    "toolbar": "basic",
+                    "media_upload": 0
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "page-templates/template-home.php"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "active": true
+}

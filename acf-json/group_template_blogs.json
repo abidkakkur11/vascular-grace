@@ -1,0 +1,45 @@
+﻿{
+    "key": "group_template_blogs",
+    "title": "Page — Blogs Template Fields",
+    "fields": [
+        {
+            "key": "field_blogs_hero_title",
+            "label": "Hero Title (HTML allowed)",
+            "name": "blogs_hero_title",
+            "type": "textarea",
+            "rows": 3,
+            "default_value": "Medical insights &\n<span class=\"hero-title-accent\">health articles.</span>",
+            "instructions": "Supports span with hero-title-accent class for the accent colour."
+        },
+        {
+            "key": "field_blogs_hero_subtitle",
+            "label": "Hero Subtitle",
+            "name": "blogs_hero_subtitle",
+            "type": "textarea",
+            "rows": 3,
+            "default_value": "Evidence-based articles on vascular health, treatment options, and patient guidance from Dr. S Srikanth Raju."
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "page-templates/template-blogs.php"
+            }
+        ],
+        [
+            {
+                "param": "page",
+                "operator": "==",
+                "value": "page_for_posts"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "active": true
+}

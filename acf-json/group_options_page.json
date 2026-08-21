@@ -1,0 +1,284 @@
+{
+    "key": "group_options_page",
+    "title": "Theme Settings — Global Options",
+    "fields": [
+        {
+            "key": "field_tab_brand",
+            "label": "Brand & Identity",
+            "name": "",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_site_logo",
+            "label": "Site Logo",
+            "name": "site_logo",
+            "type": "image",
+            "return_format": "array",
+            "preview_size": "medium",
+            "instructions": "Upload the main site logo. Recommended: transparent PNG, min 200px wide."
+        },
+        {
+            "key": "field_site_name",
+            "label": "Site / Practice Name",
+            "name": "site_name",
+            "type": "text",
+            "default_value": "Dr. S Srikanth Raju",
+            "placeholder": "Dr. S Srikanth Raju"
+        },
+        {
+            "key": "field_doctor_name_full",
+            "label": "Doctor Full Name",
+            "name": "doctor_name_full",
+            "type": "text",
+            "default_value": "Dr. S Srikanth Raju",
+            "placeholder": "Dr. S Srikanth Raju"
+        },
+        {
+            "key": "field_doctor_credentials",
+            "label": "Doctor Credentials",
+            "name": "doctor_credentials",
+            "type": "text",
+            "default_value": "MBBS · MS (Gen. Surgery) · DNB (Vascular)",
+            "placeholder": "MBBS · MS (Gen. Surgery) · DNB (Vascular)"
+        },
+        {
+            "key": "field_doctor_role",
+            "label": "Doctor Role / Title",
+            "name": "doctor_role",
+            "type": "text",
+            "default_value": "Sr. Consultant Vascular & Endovascular Surgeon / Clinical Director",
+            "placeholder": "Sr. Consultant Vascular & Endovascular Surgeon / Clinical Director"
+        },
+        {
+            "key": "field_footer_tagline",
+            "label": "Footer Brand Tagline",
+            "name": "footer_tagline",
+            "type": "textarea",
+            "rows": 3,
+            "default_value": "Sr. Consultant Vascular & Endovascular Surgeon. Restoring healthy blood flow, saving limbs and improving lives — with advanced, minimally invasive care."
+        },
+        {
+            "key": "field_footer_rating",
+            "label": "Google Rating",
+            "name": "footer_rating",
+            "type": "text",
+            "default_value": "4.9",
+            "placeholder": "4.9"
+        },
+        {
+            "key": "field_footer_review_count",
+            "label": "Review Count Text",
+            "name": "footer_review_count",
+            "type": "text",
+            "default_value": "499 Google reviews",
+            "placeholder": "499 Google reviews"
+        },
+        {
+            "key": "field_copyright_text",
+            "label": "Copyright Text",
+            "name": "copyright_text",
+            "type": "text",
+            "default_value": "© 2026 Dr. S Srikanth Raju · Med Reg No. TSMC 67043. All rights reserved.",
+            "placeholder": "© 2026 Dr. S Srikanth Raju. All rights reserved."
+        },
+        {
+            "key": "field_privacy_policy_url",
+            "label": "Privacy Policy URL",
+            "name": "privacy_policy_url",
+            "type": "url",
+            "default_value": "#"
+        },
+        {
+            "key": "field_disclaimer_url",
+            "label": "Medical Disclaimer URL",
+            "name": "disclaimer_url",
+            "type": "url",
+            "default_value": "#"
+        },
+        {
+            "key": "field_tab_contact",
+            "label": "Contact Details",
+            "name": "",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_phone_primary",
+            "label": "Primary Phone Number",
+            "name": "phone_primary",
+            "type": "text",
+            "default_value": "+91 98765 43210",
+            "placeholder": "+91 98765 43210",
+            "instructions": "Include country code and spaces for display. e.g. +91 98765 43210"
+        },
+        {
+            "key": "field_whatsapp_number",
+            "label": "WhatsApp Number",
+            "name": "whatsapp_number",
+            "type": "text",
+            "default_value": "919876543210",
+            "placeholder": "919876543210",
+            "instructions": "Number only (no + or spaces) for wa.me link. e.g. 919876543210"
+        },
+        {
+            "key": "field_email_primary",
+            "label": "Primary Email Address",
+            "name": "email_primary",
+            "type": "email",
+            "default_value": "contact@drsrikanthraju.com",
+            "placeholder": "contact@drsrikanthraju.com"
+        },
+        {
+            "key": "field_address_line1",
+            "label": "Address Line 1 (Hospital Name)",
+            "name": "address_line1",
+            "type": "text",
+            "default_value": "Yashoda Hospitals, Hitec City",
+            "placeholder": "Yashoda Hospitals, Hitec City"
+        },
+        {
+            "key": "field_address_line2",
+            "label": "Address Line 2 (City, State, PIN)",
+            "name": "address_line2",
+            "type": "text",
+            "default_value": "Hyderabad, Telangana 500081",
+            "placeholder": "Hyderabad, Telangana 500081"
+        },
+        {
+            "key": "field_business_hours",
+            "label": "Business Hours",
+            "name": "business_hours",
+            "type": "text",
+            "default_value": "Mon–Sat · 9:00 AM – 5:00 PM",
+            "placeholder": "Mon–Sat · 9:00 AM – 5:00 PM"
+        },
+        {
+            "key": "field_business_hours_sub",
+            "label": "Business Hours (Supplementary)",
+            "name": "business_hours_sub",
+            "type": "text",
+            "default_value": "Sunday · by appointment",
+            "placeholder": "Sunday · by appointment"
+        },
+        {
+            "key": "field_google_maps_embed",
+            "label": "Google Maps Embed Code",
+            "name": "google_maps_embed",
+            "type": "textarea",
+            "rows": 4,
+            "instructions": "Paste the full <iframe> embed code from Google Maps. Leave blank to use auto-generated map from address."
+        },
+        {
+            "key": "field_appointment_form_shortcode",
+            "label": "Appointment Popup — Form Shortcode",
+            "name": "appointment_form_shortcode",
+            "type": "text",
+            "placeholder": "[wpforms id=\"1\"] or [contact-form-7 id=\"1\"]",
+            "instructions": "Paste a WPForms, Contact Form 7, or any plugin shortcode here. When filled, this replaces the built-in HTML form inside the appointment popup. Leave blank to use the default built-in form."
+        },
+        {
+            "key": "field_tab_header",
+            "label": "Header & Navigation",
+            "name": "",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_header_cta_text",
+            "label": "Header CTA Button Text",
+            "name": "header_cta_text",
+            "type": "text",
+            "default_value": "Book Appointment",
+            "placeholder": "Book Appointment"
+        },
+        {
+            "key": "field_header_cta_url",
+            "label": "Header CTA Button URL",
+            "name": "header_cta_url",
+            "type": "url",
+            "default_value": "#book",
+            "placeholder": "#book",
+            "instructions": "Use #book to open the booking modal, or paste an external booking URL."
+        },
+        {
+            "key": "field_tab_social",
+            "label": "Social Media",
+            "name": "",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_social_links",
+            "label": "Social Media Links",
+            "name": "social_links",
+            "type": "repeater",
+            "min": 0,
+            "max": 10,
+            "layout": "table",
+            "button_label": "Add Social Link",
+            "sub_fields": [
+                {
+                    "key": "field_social_platform",
+                    "label": "Platform",
+                    "name": "platform",
+                    "type": "text",
+                    "placeholder": "e.g. Facebook"
+                },
+                {
+                    "key": "field_social_url",
+                    "label": "URL",
+                    "name": "url",
+                    "type": "url",
+                    "placeholder": "https://facebook.com/..."
+                }
+            ]
+        },
+        {
+            "key": "field_tab_tracking",
+            "label": "Tracking / Scripts",
+            "name": "",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_google_analytics_id",
+            "label": "Google Analytics Measurement ID",
+            "name": "google_analytics_id",
+            "type": "text",
+            "placeholder": "G-XXXXXXXXXX",
+            "instructions": "GA4 Measurement ID only. Leave blank if not using Google Analytics."
+        },
+        {
+            "key": "field_head_scripts",
+            "label": "Additional Head Scripts",
+            "name": "head_scripts",
+            "type": "textarea",
+            "rows": 5,
+            "instructions": "Custom <script> or <meta> tags for the <head>. Use with care."
+        },
+        {
+            "key": "field_body_scripts",
+            "label": "Additional Body Scripts",
+            "name": "body_scripts",
+            "type": "textarea",
+            "rows": 5,
+            "instructions": "Custom scripts before </body>. Use with care."
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "theme-settings"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "active": true
+}
