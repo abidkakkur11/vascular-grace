@@ -249,3 +249,26 @@ function vascular_grace_rewrite_flush() {
 	flush_rewrite_rules();
 }
 register_activation_hook( __FILE__, 'vascular_grace_rewrite_flush' );
+
+
+/* =========================================================
+ * 10. DISABLE GUTENBERG BLOCK EDITOR
+ * Enforces classic editor and removes unnecessary block assets
+ * ========================================================= */
+// Disable Gutenberg block editor for all post types (posts, pages, services, etc.)
+add_filter( 'use_block_editor_for_post_type', '__return_false', 100 );
+add_filter( 'use_block_editor_for_post', '__return_false', 100 );
+
+// Disable Gutenberg for widgets
+add_filter( 'use_widgets_block_editor', '__return_false' );
+
+// Remove Gutenberg block library CSS from frontend for faster loading
+function vascular_grace_remove_gutenberg_assets() {
+	wp_dequeue_style( 'wp-block-library' );
+	wp_dequeue_style( 'wp-block-library-theme' );
+	wp_dequeue_style( 'wc-blocks-style' );
+	wp_dequeue_style( 'global-styles' );
+	wp_dequeue_style( 'classic-theme-styles' );
+}
+add_action( 'wp_enqueue_scripts', 'vascular_grace_remove_gutenberg_assets', 100 );
+
