@@ -244,6 +244,40 @@
             ]
         },
         {
+            "key": "field_tab_practice_stats",
+            "label": "Practice Stats / Milestones",
+            "name": "",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_global_stats",
+            "label": "Global Practice Statistics",
+            "name": "global_stats",
+            "type": "repeater",
+            "instructions": "Clinic-wide statistics displayed on Home, About, and other pages. Leave blank to use default fallback stats.",
+            "min": 0,
+            "max": 8,
+            "layout": "table",
+            "button_label": "Add Stat",
+            "sub_fields": [
+                {
+                    "key": "field_global_stat_number",
+                    "label": "Number / Metric",
+                    "name": "stat_number",
+                    "type": "text",
+                    "placeholder": "16+"
+                },
+                {
+                    "key": "field_global_stat_label",
+                    "label": "Label",
+                    "name": "stat_label",
+                    "type": "text",
+                    "placeholder": "Years Experience"
+                }
+            ]
+        },
+        {
             "key": "field_tab_tracking",
             "label": "Tracking / Scripts",
             "name": "",

@@ -29,14 +29,6 @@ $exp_label     = vg_field( 'exp_badge_label', get_the_ID(), 'CLINICAL PRACTICE' 
 $serv_title    = vg_field( 'services_section_title', get_the_ID(), 'Advanced vascular treatments, tailored to you.' );
 $serv_desc     = vg_field( 'services_section_desc', get_the_ID(), 'From varicose veins to complex arterial disease — modern, minimally invasive care with faster recovery and lasting results.' );
 
-$stats         = vg_field( 'stats', get_the_ID() );
-$default_stats = array(
-    array( 'stat_number' => '16+',    'stat_label' => 'YEARS EXPERIENCE' ),
-    array( 'stat_number' => '10,000+','stat_label' => 'PROCEDURES PERFORMED' ),
-    array( 'stat_number' => '98%',    'stat_label' => 'SUCCESS RATE' ),
-    array( 'stat_number' => '15+',    'stat_label' => 'AWARDS &amp; FELLOWSHIPS' ),
-);
-
 $journey_title  = vg_field( 'journey_title', get_the_ID(), 'A calm, deliberate process — designed around you.' );
 $journey_steps  = vg_field( 'journey_steps', get_the_ID() );
 $default_steps  = array(
@@ -72,7 +64,6 @@ $default_faqs = array(
     ),
 );
 
-$display_stats = ( ! empty( $stats ) && is_array( $stats ) ) ? $stats : $default_stats;
 $display_steps = ( ! empty( $journey_steps ) && is_array( $journey_steps ) ) ? $journey_steps : $default_steps;
 $display_faqs  = ( ! empty( $faqs ) && is_array( $faqs ) ) ? $faqs : $default_faqs;
 ?>
@@ -215,26 +206,7 @@ $display_faqs  = ( ! empty( $faqs ) && is_array( $faqs ) ) ? $faqs : $default_fa
     </section>
 
     <!-- ── STATS SECTION ───────────────────────────────────────────────── -->
-    <section class="stats-section bg-dark text-white relative overflow-hidden">
-        <div class="cta-wave-bg">
-            <svg class="cta-vascular-svg" viewBox="0 0 1440 320" fill="none" preserveAspectRatio="none">
-                <path class="vascular-flow artery" d="M0,160 C320,300 720,30 1440,180" stroke="rgba(205, 36, 60, 0.6)" stroke-width="2" stroke-dasharray="6 8"/>
-                <path class="vascular-flow vein" d="M0,110 C380,30 820,290 1440,130" stroke="rgba(55, 91, 182, 0.6)" stroke-width="2" stroke-dasharray="6 8"/>
-                <path class="vascular-flow artery-sub" d="M0,220 C450,90 950,260 1440,230" stroke="rgba(205, 36, 60, 0.35)" stroke-width="1.5" stroke-dasharray="4 6"/>
-                <path class="vascular-flow vein-sub" d="M0,70 C280,220 760,70 1440,80" stroke="rgba(55, 91, 182, 0.35)" stroke-width="1.5" stroke-dasharray="4 6"/>
-            </svg>
-        </div>
-        <div class="container relative z-10">
-            <div class="stats-grid">
-                <?php foreach ( $display_stats as $stat ) : ?>
-                    <div class="stat-item">
-                        <div class="stat-number"><?php echo esc_html( $stat['stat_number'] ?? '' ); ?></div>
-                        <div class="stat-label"><?php echo wp_kses( $stat['stat_label'] ?? '', array() ); ?></div>
-                    </div>
-                <?php endforeach; ?>
-            </div>
-        </div>
-    </section>
+    <?php get_template_part( 'template-parts/sections/stats' ); ?>
 
     <!-- ── TREATMENT JOURNEY ───────────────────────────────────────────── -->
     <section class="journey-section py-large bg-gray-light">

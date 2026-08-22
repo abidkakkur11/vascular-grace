@@ -1531,6 +1531,17 @@ h3 { font-size: 1.25rem; }
     transform: scale(1.03);
 }
 
+.footer-doctor-name {
+    font-family: var(--font-display, 'Fraunces', serif);
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #ffffff;
+    letter-spacing: -0.01em;
+    line-height: 1.3;
+    margin-top: 0.85rem;
+    margin-bottom: 0.85rem;
+}
+
 .footer-heading {
     font-size: 1.125rem;
     margin-bottom: 1.5rem;
@@ -1653,6 +1664,10 @@ h3 { font-size: 1.25rem; }
     max-width: 580px;
     max-height: 90vh;
     overflow-y: auto;
+    overscroll-behavior: contain;
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(205, 36, 60, 0.4) transparent;
     background: #ffffff;
     color: #1e293b;
     border-radius: 1.5rem;
@@ -1662,6 +1677,27 @@ h3 { font-size: 1.25rem; }
     transform: scale(0.92) translateY(20px);
     transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s ease;
     z-index: 10;
+}
+
+/* Custom Sleek Scrollbar for Modal Card */
+.modal-card::-webkit-scrollbar {
+    width: 6px;
+}
+
+.modal-card::-webkit-scrollbar-track {
+    background: transparent;
+    margin: 1.25rem 0;
+    border-radius: 9999px;
+}
+
+.modal-card::-webkit-scrollbar-thumb {
+    background: rgba(148, 163, 184, 0.45);
+    border-radius: 9999px;
+    transition: background 0.25s ease;
+}
+
+.modal-card::-webkit-scrollbar-thumb:hover {
+    background: var(--c-primary, #cd243c);
 }
 
 @media (max-width: 640px) {
@@ -2359,10 +2395,68 @@ input[type="submit"]:hover,
     height: clamp(40px, 6vw, 90px);
 }
 
-/* About Intro & Credentials (4-Column Horizontal Grid) */
+/* About Intro & Credentials (2-Column Layout with 1:1 Photo Frame) */
+.about-intro-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    align-items: center;
+}
+
+@media (min-width: 900px) {
+    .about-intro-layout {
+        grid-template-columns: 360px 1fr;
+        gap: 3.5rem;
+    }
+}
+
+@media (min-width: 1200px) {
+    .about-intro-layout {
+        grid-template-columns: 420px 1fr;
+        gap: 4.5rem;
+    }
+}
+
+.about-intro-photo-col {
+    width: 100%;
+    max-width: 440px;
+    margin: 0 auto;
+}
+
+.about-intro-photo-frame {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: 1.75rem;
+    overflow: hidden;
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    box-shadow: 0 20px 45px -15px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(0, 0, 0, 0.07);
+    position: relative;
+}
+
+.about-intro-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.about-intro-img.default-portrait {
+    object-fit: contain;
+    object-position: center bottom;
+    background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
+    padding-top: 1.5rem;
+}
+
+.about-intro-photo-frame:hover .about-intro-img {
+    transform: scale(1.03);
+}
+
 .intro-lead {
     font-size: 1.1rem;
-    line-height: 1.7;
+    line-height: 1.75;
     color: #374151;
 }
 

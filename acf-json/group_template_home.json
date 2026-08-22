@@ -22,7 +22,7 @@
             "name": "hero_title",
             "type": "textarea",
             "rows": 3,
-            "default_value": "Vascular <span class=\"text-crimson italic amp\">&amp;<\/span> Endovascular<br>\n<span class=\"text-blue highlight\">Surgery.<\/span>",
+            "default_value": "Vascular <span class=\"text-crimson italic amp\">&amp;</span> Endovascular<br>\n<span class=\"text-blue highlight\">Surgery.</span>",
             "instructions": "Supports limited HTML (span, br). Keep existing class names."
         },
         {
@@ -115,39 +115,6 @@
             "type": "textarea",
             "rows": 3,
             "default_value": "From varicose veins to complex arterial disease — modern, minimally invasive care with faster recovery and lasting results."
-        },
-        {
-            "key": "field_home_tab_stats",
-            "label": "Stats Section",
-            "name": "",
-            "type": "tab",
-            "placement": "top"
-        },
-        {
-            "key": "field_stats",
-            "label": "Statistics",
-            "name": "stats",
-            "type": "repeater",
-            "min": 1,
-            "max": 6,
-            "layout": "table",
-            "button_label": "Add Stat",
-            "sub_fields": [
-                {
-                    "key": "field_stat_number",
-                    "label": "Number",
-                    "name": "stat_number",
-                    "type": "text",
-                    "placeholder": "16+"
-                },
-                {
-                    "key": "field_stat_label",
-                    "label": "Label",
-                    "name": "stat_label",
-                    "type": "text",
-                    "placeholder": "YEARS EXPERIENCE"
-                }
-            ]
         },
         {
             "key": "field_home_tab_journey",

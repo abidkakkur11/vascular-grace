@@ -34,6 +34,15 @@
             "placement": "top"
         },
         {
+            "key": "field_about_intro_image",
+            "label": "Intro Doctor Photo (1:1 Ratio)",
+            "name": "about_intro_image",
+            "type": "image",
+            "return_format": "array",
+            "preview_size": "medium",
+            "instructions": "Upload a square portrait / photo (1:1 aspect ratio) to display beside the introduction text."
+        },
+        {
             "key": "field_about_intro_lead1",
             "label": "Intro Paragraph 1",
             "name": "about_intro_lead1",
@@ -235,32 +244,6 @@
             "type": "textarea",
             "rows": 4,
             "default_value": "Vascular care is at its best when it is precise, gentle and clearly understood. Every patient deserves a diagnosis they trust and a treatment plan built around their life — not just their disease."
-        },
-        {
-            "key": "field_about_stats",
-            "label": "Statistics",
-            "name": "stats",
-            "type": "repeater",
-            "min": 1,
-            "max": 6,
-            "layout": "table",
-            "button_label": "Add Stat",
-            "sub_fields": [
-                {
-                    "key": "field_about_stat_number",
-                    "label": "Number",
-                    "name": "stat_number",
-                    "type": "text",
-                    "placeholder": "16+"
-                },
-                {
-                    "key": "field_about_stat_label",
-                    "label": "Label",
-                    "name": "stat_label",
-                    "type": "text",
-                    "placeholder": "Years Experience"
-                }
-            ]
         }
     ],
     "location": [

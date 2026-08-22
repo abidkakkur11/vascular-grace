@@ -18,6 +18,7 @@ $hero_subtitle = vg_field( 'about_hero_subtitle', get_the_ID(), 'MBBS, MS (Gener
 
 $intro_lead1 = vg_field( 'about_intro_lead1', get_the_ID(), 'Dr. S Srikanth Raju is a Senior Consultant Vascular &amp; Endovascular Surgeon and Foot Care Specialist at Yashoda Hospitals, Hitec City. He has specialized expertise in the diagnosis and management of a wide spectrum of foot and ankle conditions, with a strong focus on preventive care and diabetic foot management.' );
 $intro_lead2 = vg_field( 'about_intro_lead2', get_the_ID(), 'He is one of India\'s few vascular surgeons who has received training in both open and endovascular procedures, and is adept at performing the full range of modern vascular surgeries — from same-day laser treatment for varicose veins to complex aortic aneurysm repairs and emergency limb salvage.' );
+$intro_image = vg_field( 'about_intro_image', get_the_ID() );
 
 $credentials = vg_field( 'credentials', get_the_ID() );
 $default_creds = array(
@@ -55,15 +56,6 @@ $default_pubs = array(
 $display_pubs = ! empty( $publications ) ? $publications : $default_pubs;
 
 $philosophy_quote = vg_field( 'philosophy_quote', get_the_ID(), '"Vascular care is at its best when it is precise, gentle and clearly understood. Every patient deserves a diagnosis they trust and a treatment plan built around their life — not just their disease."' );
-
-$stats = vg_field( 'stats', get_the_ID() );
-$default_stats = array(
-    array( 'stat_number' => '16+',     'stat_label' => 'Years Experience' ),
-    array( 'stat_number' => '10,000+', 'stat_label' => 'Procedures Performed' ),
-    array( 'stat_number' => '98%',     'stat_label' => 'Success Rate' ),
-    array( 'stat_number' => '15+',     'stat_label' => 'Awards &amp; Fellowships' ),
-);
-$display_stats = ! empty( $stats ) ? $stats : $default_stats;
 ?>
 
     <!-- ── PAGE HERO ───────────────────────────────────────────────────── -->
@@ -106,10 +98,24 @@ $display_stats = ! empty( $stats ) ? $stats : $default_stats;
     <!-- ── INTRO & CREDENTIALS ─────────────────────────────────────────── -->
     <section class="about-intro-section py-large bg-white">
         <div class="container">
-            <div class="about-intro-text max-w-4xl mb-12">
-                <p class="intro-lead mb-6"><?php echo wp_kses_post( $intro_lead1 ); ?></p>
-                <p class="intro-lead"><?php echo wp_kses_post( $intro_lead2 ); ?></p>
+            <div class="about-intro-layout mb-16">
+                <div class="about-intro-photo-col">
+                    <div class="about-intro-photo-frame">
+                        <?php if ( ! empty( $intro_image ) && is_array( $intro_image ) && ! empty( $intro_image['url'] ) ) : ?>
+                            <img src="<?php echo esc_url( $intro_image['url'] ); ?>" alt="<?php echo esc_attr( $intro_image['alt'] ?? get_the_title() ); ?>" class="about-intro-img" loading="lazy">
+                        <?php else : ?>
+                            <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/dr-srikanth-raju-transparent.png' ); ?>" alt="<?php esc_attr_e( 'Dr. S Srikanth Raju', 'vascular-grace' ); ?>" class="about-intro-img default-portrait" loading="lazy">
+                        <?php endif; ?>
+                    </div>
+                </div>
+                <div class="about-intro-text-col">
+                    <div class="section-label text-crimson mb-3"><?php esc_html_e( '— CLINICAL LEADERSHIP', 'vascular-grace' ); ?></div>
+                    <h2 class="section-title text-dark mb-6"><?php esc_html_e( 'Dedicated Vascular &amp; Endovascular Care', 'vascular-grace' ); ?></h2>
+                    <p class="intro-lead mb-6"><?php echo wp_kses_post( $intro_lead1 ); ?></p>
+                    <p class="intro-lead"><?php echo wp_kses_post( $intro_lead2 ); ?></p>
+                </div>
             </div>
+
             <div class="about-credentials-grid">
                 <?php foreach ( $display_creds as $cred ) : ?>
                     <div class="cred-card">
@@ -236,26 +242,7 @@ $display_stats = ! empty( $stats ) ? $stats : $default_stats;
     </section>
 
     <!-- ── STATS BAND ───────────────────────────────────────────────────── -->
-    <section class="stats-section py-large bg-dark text-white relative overflow-hidden">
-        <div class="cta-wave-bg">
-            <svg class="cta-vascular-svg" viewBox="0 0 1440 320" fill="none" preserveAspectRatio="none">
-                <path class="vascular-flow artery" d="M0,160 C320,300 720,30 1440,180" stroke="rgba(205, 36, 60, 0.6)" stroke-width="2" stroke-dasharray="6 8"/>
-                <path class="vascular-flow vein" d="M0,110 C380,30 820,290 1440,130" stroke="rgba(55, 91, 182, 0.6)" stroke-width="2" stroke-dasharray="6 8"/>
-                <path class="vascular-flow artery-sub" d="M0,220 C450,90 950,260 1440,230" stroke="rgba(205, 36, 60, 0.35)" stroke-width="1.5" stroke-dasharray="4 6"/>
-                <path class="vascular-flow vein-sub" d="M0,70 C280,220 760,70 1440,80" stroke="rgba(55, 91, 182, 0.35)" stroke-width="1.5" stroke-dasharray="4 6"/>
-            </svg>
-        </div>
-        <div class="container relative z-10">
-            <div class="stats-grid">
-                <?php foreach ( $display_stats as $stat ) : ?>
-                    <div class="stat-card">
-                        <div class="stat-number font-display"><?php echo esc_html( $stat['stat_number'] ?? '' ); ?></div>
-                        <div class="stat-label"><?php echo wp_kses( $stat['stat_label'] ?? '', array() ); ?></div>
-                    </div>
-                <?php endforeach; ?>
-            </div>
-        </div>
-    </section>
+    <?php get_template_part( 'template-parts/sections/stats', null, array( 'class' => 'py-large' ) ); ?>
 
     <!-- ── CTA BAND ────────────────────────────────────────────────────── -->
     <?php get_template_part( 'template-parts/sections/cta-band' ); ?>

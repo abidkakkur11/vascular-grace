@@ -5,9 +5,15 @@
 
                 <!-- Brand Column -->
                 <div class="footer-col brand-col">
-                    <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="footer-logo mb-6 inline-block" aria-label="<?php esc_attr_e( 'Dr. S Srikanth Raju Home', 'vascular-grace' ); ?>">
+                    <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="footer-logo inline-block" aria-label="<?php esc_attr_e( 'Dr. S Srikanth Raju Home', 'vascular-grace' ); ?>">
                         <?php echo vg_get_logo_img( 'footer-logo-img', 'Dr. S Srikanth Raju Logo' ); ?>
                     </a>
+                    <?php
+                    $doctor_full_name = vg_option( 'doctor_name_full', 'Dr. S Srikanth Raju' );
+                    if ( ! empty( $doctor_full_name ) ) :
+                        ?>
+                        <div class="footer-doctor-name"><?php echo esc_html( $doctor_full_name ); ?></div>
+                    <?php endif; ?>
                     <p class="footer-text mb-6">
                         <?php vg_the_text( 'footer_tagline', 'option', __( 'Sr. Consultant Vascular & Endovascular Surgeon. Restoring healthy blood flow, saving limbs and improving lives — with advanced, minimally invasive care.', 'vascular-grace' ) ); ?>
                     </p>
