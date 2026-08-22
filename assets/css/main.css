@@ -3350,6 +3350,28 @@ input[type="submit"]:hover,
    Contact Page Specific Component Styles
    ========================================================================== */
 
+/* Contact Hero Buttons Mobile Column Stacking */
+.contact-hero-btns {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+@media (max-width: 640px) {
+    .contact-hero-btns {
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+        gap: 0.875rem;
+    }
+
+    .contact-hero-btns .btn {
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+    }
+}
+
 .contact-main-section {
     padding: 6.5rem 0;
 }
