@@ -15,7 +15,7 @@
             "name": "media_hero_title",
             "type": "textarea",
             "rows": 3,
-            "default_value": "Media &\n<span class=\"hero-title-accent\">Press.</span>",
+            "default_value": "Clinical insights, videos and \n<span class=\"hero-title-accent\">news features.</span>",
             "instructions": "Supports span with hero-title-accent class for accent color. Use newlines for line breaks."
         },
         {
@@ -24,60 +24,57 @@
             "name": "media_hero_subtitle",
             "type": "textarea",
             "rows": 3,
-            "default_value": "Press mentions, awards, television appearances, and media coverage featuring Dr. S Srikanth Raju."
+            "default_value": "Watch patient awareness shorts, in-depth surgical talks, and explore recent media coverage with Dr. S Srikanth Raju."
         },
         {
-            "key": "field_media_tab_press",
-            "label": "Press Mentions",
+            "key": "field_media_tab_shorts",
+            "label": "Short-Form Videos (Reels / Shorts)",
             "name": "",
             "type": "tab",
             "placement": "top"
         },
         {
-            "key": "field_press_items",
-            "label": "Press & News Articles",
-            "name": "press_items",
+            "key": "field_media_shorts",
+            "label": "Shorts & Reels",
+            "name": "media_shorts",
             "type": "repeater",
             "min": 0,
             "max": 20,
             "layout": "block",
-            "button_label": "Add Press Mention",
+            "button_label": "Add Short / Reel",
             "sub_fields": [
                 {
-                    "key": "field_press_outlet",
-                    "label": "Publication / News Outlet Name",
-                    "name": "press_outlet",
+                    "key": "field_short_title",
+                    "label": "Title",
+                    "name": "short_title",
                     "type": "text",
-                    "placeholder": "The Times of India",
+                    "placeholder": "Early Signs of Varicose Veins You Shouldn't Ignore",
                     "required": 1
                 },
                 {
-                    "key": "field_press_date",
-                    "label": "Date / Edition",
-                    "name": "press_date",
-                    "type": "text",
-                    "placeholder": "March 2025"
-                },
-                {
-                    "key": "field_press_headline",
-                    "label": "Article Headline / Topic",
-                    "name": "press_headline",
-                    "type": "textarea",
-                    "rows": 2,
-                    "placeholder": "Groundbreaking Minimally Invasive Surgery Restores Blood Flow in Complex Diabetic Foot Case",
-                    "required": 1
-                },
-                {
-                    "key": "field_press_url",
-                    "label": "Article / Press URL",
-                    "name": "press_url",
+                    "key": "field_short_url",
+                    "label": "Video Link (YouTube Shorts / Instagram Reel / Direct URL)",
+                    "name": "short_url",
                     "type": "url",
-                    "placeholder": "https://..."
+                    "placeholder": "https://www.youtube.com/shorts/..."
                 },
                 {
-                    "key": "field_press_logo",
-                    "label": "Outlet Logo (Optional)",
-                    "name": "press_logo",
+                    "key": "field_short_bg",
+                    "label": "Gradient Color Style",
+                    "name": "short_bg",
+                    "type": "select",
+                    "choices": {
+                        "short-bg-1": "Deep Navy Blue (short-bg-1)",
+                        "short-bg-2": "Crimson Red (short-bg-2)",
+                        "short-bg-3": "Royal Blue to Crimson (short-bg-3)",
+                        "short-bg-4": "Emerald Green (short-bg-4)"
+                    },
+                    "default_value": "short-bg-1"
+                },
+                {
+                    "key": "field_short_thumb",
+                    "label": "Custom Thumbnail Image (Optional — overrides gradient)",
+                    "name": "short_thumb",
                     "type": "image",
                     "return_format": "array",
                     "preview_size": "medium"
@@ -85,78 +82,111 @@
             ]
         },
         {
-            "key": "field_media_tab_awards",
-            "label": "Awards & Recognition",
+            "key": "field_media_tab_youtube",
+            "label": "Educational YouTube Videos",
             "name": "",
             "type": "tab",
             "placement": "top"
         },
         {
-            "key": "field_awards",
-            "label": "Awards & Honors",
-            "name": "awards",
+            "key": "field_media_youtube",
+            "label": "Long-Form Videos",
+            "name": "media_youtube",
             "type": "repeater",
             "min": 0,
             "max": 20,
-            "layout": "table",
-            "button_label": "Add Award",
+            "layout": "block",
+            "button_label": "Add YouTube Video",
             "sub_fields": [
                 {
-                    "key": "field_award_title",
-                    "label": "Award / Recognition Title",
-                    "name": "award_title",
+                    "key": "field_yt_title",
+                    "label": "Video Title",
+                    "name": "yt_title",
                     "type": "text",
-                    "placeholder": "Excellence in Vascular Surgery Award",
+                    "placeholder": "Modern Management of Peripheral Arterial Disease (PAD)",
                     "required": 1
                 },
                 {
-                    "key": "field_award_institution",
-                    "label": "Presented By / Institution",
-                    "name": "award_institution",
-                    "type": "text",
-                    "placeholder": "Vascular Society of India"
+                    "key": "field_yt_url",
+                    "label": "YouTube Video URL",
+                    "name": "yt_url",
+                    "type": "url",
+                    "placeholder": "https://www.youtube.com/watch?v=..."
                 },
                 {
-                    "key": "field_award_year",
-                    "label": "Year",
-                    "name": "award_year",
-                    "type": "text",
-                    "placeholder": "2024"
+                    "key": "field_yt_bg",
+                    "label": "Gradient Color Style",
+                    "name": "yt_bg",
+                    "type": "select",
+                    "choices": {
+                        "yt-bg-1": "Deep Navy (yt-bg-1)",
+                        "yt-bg-2": "Dark Crimson (yt-bg-2)",
+                        "yt-bg-3": "Charcoal Slate (yt-bg-3)"
+                    },
+                    "default_value": "yt-bg-1"
+                },
+                {
+                    "key": "field_yt_thumb",
+                    "label": "Custom Thumbnail Image (Optional — overrides gradient)",
+                    "name": "yt_thumb",
+                    "type": "image",
+                    "return_format": "array",
+                    "preview_size": "medium"
                 }
             ]
         },
         {
-            "key": "field_media_tab_gallery",
-            "label": "Media Gallery",
+            "key": "field_media_tab_news",
+            "label": "Press & News Highlights",
             "name": "",
             "type": "tab",
             "placement": "top"
         },
         {
-            "key": "field_media_gallery",
-            "label": "Photo & Event Gallery",
-            "name": "media_gallery",
+            "key": "field_media_news",
+            "label": "News Articles",
+            "name": "media_news",
             "type": "repeater",
             "min": 0,
-            "max": 30,
+            "max": 20,
             "layout": "block",
-            "button_label": "Add Photo",
+            "button_label": "Add News Article",
             "sub_fields": [
                 {
-                    "key": "field_gallery_image",
-                    "label": "Image",
-                    "name": "gallery_image",
-                    "type": "image",
-                    "return_format": "array",
-                    "preview_size": "medium",
+                    "key": "field_news_title",
+                    "label": "Article Headline",
+                    "name": "news_title",
+                    "type": "textarea",
+                    "rows": 2,
+                    "placeholder": "Minimally Invasive Techniques Transforming Diabetic Foot Management in Telangana",
                     "required": 1
                 },
                 {
-                    "key": "field_gallery_caption",
-                    "label": "Caption / Event Title",
-                    "name": "gallery_caption",
-                    "type": "text",
-                    "placeholder": "Speaking at the National Endovascular Symposium, 2024"
+                    "key": "field_news_url",
+                    "label": "Article / Press URL",
+                    "name": "news_url",
+                    "type": "url",
+                    "placeholder": "https://..."
+                },
+                {
+                    "key": "field_news_bg",
+                    "label": "Gradient Color Style",
+                    "name": "news_bg",
+                    "type": "select",
+                    "choices": {
+                        "news-bg-1": "Emerald Green (news-bg-1)",
+                        "news-bg-2": "Navy Blue (news-bg-2)",
+                        "news-bg-3": "Crimson (news-bg-3)"
+                    },
+                    "default_value": "news-bg-1"
+                },
+                {
+                    "key": "field_news_thumb",
+                    "label": "Custom Featured Image (Optional — overrides gradient)",
+                    "name": "news_thumb",
+                    "type": "image",
+                    "return_format": "array",
+                    "preview_size": "medium"
                 }
             ]
         }
