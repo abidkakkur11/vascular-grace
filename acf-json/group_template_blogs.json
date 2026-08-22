@@ -1,4 +1,4 @@
-﻿{
+{
     "key": "group_template_blogs",
     "title": "Page — Blogs Template Fields",
     "fields": [
@@ -8,7 +8,7 @@
             "name": "blogs_hero_title",
             "type": "textarea",
             "rows": 3,
-            "default_value": "Medical insights &\n<span class=\"hero-title-accent\">health articles.</span>",
+            "default_value": "Medical insights & \n<span class=\"hero-title-accent\">health articles.</span>",
             "instructions": "Supports span with hero-title-accent class for the accent colour."
         },
         {

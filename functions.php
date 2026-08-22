@@ -45,10 +45,11 @@ function vascular_grace_setup() {
 		'flex-width'  => true,
 	) );
 
-	// Register two nav menu locations — left and right of logo (split nav design)
+	// Register nav menu locations — header split nav and footer explore menu
 	register_nav_menus( array(
-		'nav_left'  => esc_html__( 'Header — Left Nav (Home, About, Services)', VASCULAR_GRACE_TEXT_DOMAIN ),
-		'nav_right' => esc_html__( 'Header — Right Nav (Blogs, Testimonials, Contact)', VASCULAR_GRACE_TEXT_DOMAIN ),
+		'nav_left'       => esc_html__( 'Header - Left Nav', VASCULAR_GRACE_TEXT_DOMAIN ),
+		'nav_right'      => esc_html__( 'Header - Right Nav', VASCULAR_GRACE_TEXT_DOMAIN ),
+		'footer_explore' => esc_html__( 'Footer - Explore Menu', VASCULAR_GRACE_TEXT_DOMAIN ),
 	) );
 }
 add_action( 'after_setup_theme', 'vascular_grace_setup' );

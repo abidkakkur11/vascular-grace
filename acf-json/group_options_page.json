@@ -170,6 +170,15 @@
             "instructions": "Paste the full <iframe> embed code from Google Maps. Leave blank to use auto-generated map from address."
         },
         {
+            "key": "field_gmb_review_url",
+            "label": "Google Business Profile / Review Link",
+            "name": "gmb_review_url",
+            "type": "url",
+            "placeholder": "https://g.page/r/.../review or https://maps.google.com/?cid=...",
+            "instructions": "Direct link to your Google My Business review page for the \"View All Reviews on Google\" button.",
+            "default_value": "https://www.google.com/search?q=Dr.+S+Srikanth+Raju+Vascular+Surgeon+Yashoda+Hospitals+Hitec+City"
+        },
+        {
             "key": "field_appointment_form_shortcode",
             "label": "Appointment Popup — Form Shortcode",
             "name": "appointment_form_shortcode",

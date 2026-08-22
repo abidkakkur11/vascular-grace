@@ -1,4 +1,4 @@
-﻿{
+{
     "key": "group_template_about",
     "title": "Page — About Template Fields",
     "fields": [
@@ -234,7 +234,7 @@
             "name": "philosophy_quote",
             "type": "textarea",
             "rows": 4,
-            "default_value": "\"Vascular care is at its best when it is precise, gentle and clearly understood. Every patient deserves a diagnosis they trust and a treatment plan built around their life — not just their disease.\""
+            "default_value": "Vascular care is at its best when it is precise, gentle and clearly understood. Every patient deserves a diagnosis they trust and a treatment plan built around their life — not just their disease."
         },
         {
             "key": "field_about_stats",

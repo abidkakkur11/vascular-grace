@@ -23,15 +23,27 @@
                 <!-- Explore Links -->
                 <div class="footer-col">
                     <h4 class="footer-heading"><?php esc_html_e( 'Explore', 'vascular-grace' ); ?></h4>
-                    <ul class="footer-links">
-                        <li><a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php esc_html_e( 'Home', 'vascular-grace' ); ?></a></li>
-                        <li><a href="<?php echo esc_url( home_url( '/about/' ) ); ?>"><?php esc_html_e( 'About', 'vascular-grace' ); ?></a></li>
-                        <li><a href="<?php echo esc_url( home_url( '/services/' ) ); ?>"><?php esc_html_e( 'Services', 'vascular-grace' ); ?></a></li>
-                        <li><a href="<?php echo esc_url( home_url( '/blogs/' ) ); ?>"><?php esc_html_e( 'Blogs', 'vascular-grace' ); ?></a></li>
-                        <li><a href="<?php echo esc_url( home_url( '/testimonials/' ) ); ?>"><?php esc_html_e( 'Testimonials', 'vascular-grace' ); ?></a></li>
-                        <li><a href="<?php echo esc_url( home_url( '/media/' ) ); ?>"><?php esc_html_e( 'Media', 'vascular-grace' ); ?></a></li>
-                        <li><a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>"><?php esc_html_e( 'Contact', 'vascular-grace' ); ?></a></li>
-                    </ul>
+                    <?php if ( has_nav_menu( 'footer_explore' ) ) : ?>
+                        <?php
+                        wp_nav_menu( array(
+                            'theme_location' => 'footer_explore',
+                            'container'      => false,
+                            'menu_class'     => 'footer-links',
+                            'fallback_cb'    => false,
+                            'depth'          => 1,
+                        ) );
+                        ?>
+                    <?php else : ?>
+                        <ul class="footer-links">
+                            <li><a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php esc_html_e( 'Home', 'vascular-grace' ); ?></a></li>
+                            <li><a href="<?php echo esc_url( home_url( '/about/' ) ); ?>"><?php esc_html_e( 'About', 'vascular-grace' ); ?></a></li>
+                            <li><a href="<?php echo esc_url( home_url( '/services/' ) ); ?>"><?php esc_html_e( 'Services', 'vascular-grace' ); ?></a></li>
+                            <li><a href="<?php echo esc_url( home_url( '/blogs/' ) ); ?>"><?php esc_html_e( 'Blogs', 'vascular-grace' ); ?></a></li>
+                            <li><a href="<?php echo esc_url( home_url( '/testimonials/' ) ); ?>"><?php esc_html_e( 'Testimonials', 'vascular-grace' ); ?></a></li>
+                            <li><a href="<?php echo esc_url( home_url( '/media/' ) ); ?>"><?php esc_html_e( 'Media', 'vascular-grace' ); ?></a></li>
+                            <li><a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>"><?php esc_html_e( 'Contact', 'vascular-grace' ); ?></a></li>
+                        </ul>
+                    <?php endif; ?>
                 </div>
 
                 <!-- Services Quick Links -->

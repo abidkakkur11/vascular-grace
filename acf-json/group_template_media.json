@@ -1,6 +1,6 @@
-﻿{
+{
     "key": "group_template_media",
-    "title": "Page — Media Template Fields",
+    "title": "Page \u2014 Media Template Fields",
     "fields": [
         {
             "key": "field_media_tab_hero",
@@ -60,7 +60,7 @@
                 },
                 {
                     "key": "field_short_thumb",
-                    "label": "Custom Thumbnail Image (Optional — if blank, default video thumbnail is used)",
+                    "label": "Custom Thumbnail Image (Optional \u2014 if blank, default video thumbnail is used)",
                     "name": "short_thumb",
                     "type": "image",
                     "return_format": "array",
@@ -102,7 +102,7 @@
                 },
                 {
                     "key": "field_yt_thumb",
-                    "label": "Custom Thumbnail Image (Optional — if blank, YouTube thumbnail is fetched automatically)",
+                    "label": "Custom Thumbnail Image (Optional \u2014 if blank, YouTube thumbnail is fetched automatically)",
                     "name": "yt_thumb",
                     "type": "image",
                     "return_format": "array",
@@ -160,13 +160,6 @@
                 "param": "page_template",
                 "operator": "==",
                 "value": "page-templates/template-media.php"
-            }
-        ],
-        [
-            {
-                "param": "page_template",
-                "operator": "==",
-                "value": "template-media.php"
             }
         ]
     ],

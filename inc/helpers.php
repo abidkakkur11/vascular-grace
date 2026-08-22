@@ -245,4 +245,55 @@ function vg_get_video_thumbnail( $video_url = '', $custom_thumb = null ) {
 	return '';
 }
 
+/**
+ * Fetch cached Google reviews directly from Trustindex database table.
+ * Returns array of review objects, or empty array if Trustindex is not yet connected.
+ *
+ * @param int $limit Max number of reviews to retrieve (default 30).
+ * @return array
+ */
+function vg_get_trustindex_google_reviews( $limit = 30 ) {
+	global $wpdb;
+	$table = $wpdb->prefix . 'trustindex_google_reviews';
+
+	// Safe check if table exists
+	$table_exists = $wpdb->get_var( $wpdb->prepare( 'SHOW TABLES LIKE %s', $table ) );
+	if ( empty( $table_exists ) || $table_exists !== $table ) {
+		return array();
+	}
+
+	$limit_sql = ( $limit > 0 ) ? 'LIMIT ' . intval( $limit ) : '';
+	$results   = $wpdb->get_results( "SELECT * FROM {$table} WHERE rating >= 4 AND text != '' ORDER BY date DESC {$limit_sql}" );
+
+	if ( empty( $results ) || ! is_array( $results ) ) {
+		return array();
+	}
+
+	return $results;
+}
+
+/**
+ * Get Google Business Profile / Google Reviews URL.
+ *
+ * @return string
+ */
+function vg_get_gmb_review_url() {
+	$url = vg_option( 'gmb_review_url', '' );
+	if ( ! empty( $url ) ) {
+		return esc_url( $url );
+	}
+
+	// Check if Trustindex has a connected page
+	$page_details = get_option( 'trustindex-google-page-details' );
+	if ( ! empty( $page_details ) && is_array( $page_details ) && ! empty( $page_details['id'] ) ) {
+		if ( is_numeric( $page_details['id'] ) ) {
+			return 'https://maps.google.com/?cid=' . esc_attr( $page_details['id'] );
+		}
+	}
+
+	return 'https://www.google.com/search?q=Dr.+S+Srikanth+Raju+Vascular+Surgeon+Yashoda+Hospitals+Hitec+City';
+}
+
+
+
 
