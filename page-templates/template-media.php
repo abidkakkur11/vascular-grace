@@ -7,7 +7,8 @@
  * 2. Long-Form Educational Videos (YouTube Talks & Patient Case Studies)
  * 3. News & Media Highlights (Press & Coverage)
  *
- * ACF Field Group Location: Page Template → is → template-media.php
+ * Automatically displays default YouTube video thumbnails, or custom uploaded
+ * thumbnail images when provided via ACF.
  *
  * @package VascularGrace
  */
@@ -23,22 +24,22 @@ $default_shorts = array(
     array(
         'short_title' => "Early Signs of Varicose Veins You Shouldn't Ignore",
         'short_url'   => '',
-        'short_bg'    => 'short-bg-1',
+        'short_thumb' => '',
     ),
     array(
         'short_title' => 'Daily Foot Care Routine for Diabetic Patients',
         'short_url'   => '',
-        'short_bg'    => 'short-bg-2',
+        'short_thumb' => '',
     ),
     array(
         'short_title' => 'How to Prevent DVT on Flights Longer than 4 Hours',
         'short_url'   => '',
-        'short_bg'    => 'short-bg-3',
+        'short_thumb' => '',
     ),
     array(
         'short_title' => 'Laser vs Surgery: What is Walk-in Walk-out Vein Care?',
         'short_url'   => '',
-        'short_bg'    => 'short-bg-4',
+        'short_thumb' => '',
     ),
 );
 $display_shorts = ( ! empty( $shorts_items ) && is_array( $shorts_items ) ) ? $shorts_items : $default_shorts;
@@ -49,17 +50,17 @@ $default_youtube = array(
     array(
         'yt_title' => 'Modern Management of Peripheral Arterial Disease (PAD)',
         'yt_url'   => '',
-        'yt_bg'    => 'yt-bg-1',
+        'yt_thumb' => '',
     ),
     array(
         'yt_title' => 'Endovenous Laser Ablation: What Happens on Procedure Day?',
         'yt_url'   => '',
-        'yt_bg'    => 'yt-bg-2',
+        'yt_thumb' => '',
     ),
     array(
         'yt_title' => 'Complex Aortic Aneurysm Repair (EVAR) & Dissection Care',
         'yt_url'   => '',
-        'yt_bg'    => 'yt-bg-3',
+        'yt_thumb' => '',
     ),
 );
 $display_youtube = ( ! empty( $youtube_items ) && is_array( $youtube_items ) ) ? $youtube_items : $default_youtube;
@@ -70,17 +71,17 @@ $default_news = array(
     array(
         'news_title' => 'Minimally Invasive Techniques Transforming Diabetic Foot Management in Telangana',
         'news_url'   => '',
-        'news_bg'    => 'news-bg-1',
+        'news_thumb' => '',
     ),
     array(
         'news_title' => 'Yashoda Hospitals Successfully Performs Emergency Aortic Aneurysm Salvage',
         'news_url'   => '',
-        'news_bg'    => 'news-bg-2',
+        'news_thumb' => '',
     ),
     array(
         'news_title' => 'Walk-In Walk-Out Laser Surgery: The Future of Varicose Vein Treatment',
         'news_url'   => '',
-        'news_bg'    => 'news-bg-3',
+        'news_thumb' => '',
     ),
 );
 $display_news = ( ! empty( $news_items ) && is_array( $news_items ) ) ? $news_items : $default_news;
@@ -139,21 +140,30 @@ $display_news = ( ! empty( $news_items ) && is_array( $news_items ) ) ? $news_it
 
             <div class="shorts-grid">
                 <?php foreach ( $display_shorts as $i => $short ) :
-                    $s_bg    = ! empty( $short['short_bg'] ) ? esc_attr( $short['short_bg'] ) : ( 'short-bg-' . ( ( $i % 4 ) + 1 ) );
-                    $s_thumb = $short['short_thumb'] ?? null;
-                    $s_url   = ! empty( $short['short_url'] ) ? esc_url( $short['short_url'] ) : '';
-                    $tag     = $s_url ? 'a' : 'div';
-                    $href    = $s_url ? ' href="' . $s_url . '" target="_blank" rel="noopener noreferrer"' : '';
-                    $style   = ( ! empty( $s_thumb ) && is_array( $s_thumb ) ) ? ' style="background-image:url(' . esc_url( $s_thumb['url'] ) . ');"' : '';
+                    $s_url      = ! empty( $short['short_url'] ) ? esc_url( $short['short_url'] ) : '';
+                    $s_thumb    = $short['short_thumb'] ?? null;
+                    $thumb_src  = vg_get_video_thumbnail( $s_url, $s_thumb );
+                    $tag        = $s_url ? 'a' : 'div';
+                    $href       = $s_url ? ' href="' . $s_url . '" target="_blank" rel="noopener noreferrer"' : '';
+                    $bg_class   = 'short-bg-' . ( ( $i % 4 ) + 1 );
                     ?>
                     <<?php echo $tag . $href; ?> class="short-video-card">
                         <div class="short-thumb-wrapper">
-                            <div class="short-gradient-art <?php echo $s_bg; ?>"<?php echo $style; ?>>
-                                <div class="grid-noise-overlay"></div>
-                                <div class="play-btn-pulse">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                            <?php if ( ! empty( $thumb_src ) ) : ?>
+                                <div class="short-gradient-art" style="background-image: url('<?php echo esc_url( $thumb_src ); ?>');">
+                                    <div class="video-overlay-tint"></div>
+                                    <div class="play-btn-pulse">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                                    </div>
                                 </div>
-                            </div>
+                            <?php else : ?>
+                                <div class="short-gradient-art <?php echo esc_attr( $bg_class ); ?>">
+                                    <div class="grid-noise-overlay"></div>
+                                    <div class="play-btn-pulse">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                                    </div>
+                                </div>
+                            <?php endif; ?>
                         </div>
                         <div class="short-card-info">
                             <h3 class="short-card-title font-display"><?php echo esc_html( $short['short_title'] ?? '' ); ?></h3>
@@ -174,21 +184,30 @@ $display_news = ( ! empty( $news_items ) && is_array( $news_items ) ) ? $news_it
 
             <div class="youtube-videos-grid">
                 <?php foreach ( $display_youtube as $i => $yt ) :
-                    $yt_bg    = ! empty( $yt['yt_bg'] ) ? esc_attr( $yt['yt_bg'] ) : ( 'yt-bg-' . ( ( $i % 3 ) + 1 ) );
-                    $yt_thumb = $yt['yt_thumb'] ?? null;
-                    $yt_url   = ! empty( $yt['yt_url'] ) ? esc_url( $yt['yt_url'] ) : '';
-                    $tag      = $yt_url ? 'a' : 'div';
-                    $href     = $yt_url ? ' href="' . $yt_url . '" target="_blank" rel="noopener noreferrer"' : '';
-                    $style    = ( ! empty( $yt_thumb ) && is_array( $yt_thumb ) ) ? ' style="background-image:url(' . esc_url( $yt_thumb['url'] ) . ');"' : '';
+                    $yt_url     = ! empty( $yt['yt_url'] ) ? esc_url( $yt['yt_url'] ) : '';
+                    $yt_thumb   = $yt['yt_thumb'] ?? null;
+                    $thumb_src  = vg_get_video_thumbnail( $yt_url, $yt_thumb );
+                    $tag        = $yt_url ? 'a' : 'div';
+                    $href       = $yt_url ? ' href="' . $yt_url . '" target="_blank" rel="noopener noreferrer"' : '';
+                    $bg_class   = 'yt-bg-' . ( ( $i % 3 ) + 1 );
                     ?>
                     <<?php echo $tag . $href; ?> class="yt-video-card">
                         <div class="yt-thumb-wrapper">
-                            <div class="yt-gradient-art <?php echo $yt_bg; ?>"<?php echo $style; ?>>
-                                <div class="grid-noise-overlay"></div>
-                                <div class="yt-play-button">
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                            <?php if ( ! empty( $thumb_src ) ) : ?>
+                                <div class="yt-gradient-art" style="background-image: url('<?php echo esc_url( $thumb_src ); ?>');">
+                                    <div class="video-overlay-tint"></div>
+                                    <div class="yt-play-button">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                                    </div>
                                 </div>
-                            </div>
+                            <?php else : ?>
+                                <div class="yt-gradient-art <?php echo esc_attr( $bg_class ); ?>">
+                                    <div class="grid-noise-overlay"></div>
+                                    <div class="yt-play-button">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                                    </div>
+                                </div>
+                            <?php endif; ?>
                         </div>
                         <div class="yt-video-body">
                             <h3 class="yt-video-title font-display"><?php echo esc_html( $yt['yt_title'] ?? '' ); ?></h3>
@@ -209,18 +228,29 @@ $display_news = ( ! empty( $news_items ) && is_array( $news_items ) ) ? $news_it
 
             <div class="news-media-grid">
                 <?php foreach ( $display_news as $i => $news ) :
-                    $n_bg    = ! empty( $news['news_bg'] ) ? esc_attr( $news['news_bg'] ) : ( 'news-bg-' . ( ( $i % 3 ) + 1 ) );
-                    $n_thumb = $news['news_thumb'] ?? null;
-                    $n_url   = ! empty( $news['news_url'] ) ? esc_url( $news['news_url'] ) : '';
-                    $tag     = $n_url ? 'a' : 'article';
-                    $href    = $n_url ? ' href="' . $n_url . '" target="_blank" rel="noopener noreferrer"' : '';
-                    $style   = ( ! empty( $n_thumb ) && is_array( $n_thumb ) ) ? ' style="background-image:url(' . esc_url( $n_thumb['url'] ) . ');"' : '';
+                    $n_url      = ! empty( $news['news_url'] ) ? esc_url( $news['news_url'] ) : '';
+                    $n_thumb    = $news['news_thumb'] ?? null;
+                    $thumb_src  = '';
+                    if ( ! empty( $n_thumb ) && is_array( $n_thumb ) && ! empty( $n_thumb['url'] ) ) {
+                        $thumb_src = $n_thumb['url'];
+                    } elseif ( is_string( $n_thumb ) && ! empty( $n_thumb ) ) {
+                        $thumb_src = $n_thumb;
+                    }
+                    $tag        = $n_url ? 'a' : 'article';
+                    $href       = $n_url ? ' href="' . $n_url . '" target="_blank" rel="noopener noreferrer"' : '';
+                    $bg_class   = 'news-bg-' . ( ( $i % 3 ) + 1 );
                     ?>
                     <<?php echo $tag . $href; ?> class="news-article-card">
                         <div class="news-thumb-wrapper">
-                            <div class="news-gradient-art <?php echo $n_bg; ?>"<?php echo $style; ?>>
-                                <div class="grid-noise-overlay"></div>
-                            </div>
+                            <?php if ( ! empty( $thumb_src ) ) : ?>
+                                <div class="news-gradient-art" style="background-image: url('<?php echo esc_url( $thumb_src ); ?>');">
+                                    <div class="video-overlay-tint"></div>
+                                </div>
+                            <?php else : ?>
+                                <div class="news-gradient-art <?php echo esc_attr( $bg_class ); ?>">
+                                    <div class="grid-noise-overlay"></div>
+                                </div>
+                            <?php endif; ?>
                         </div>
                         <div class="news-body">
                             <h3 class="news-title font-display">
@@ -237,4 +267,5 @@ $display_news = ( ! empty( $news_items ) && is_array( $news_items ) ) ? $news_it
     <?php get_template_part( 'template-parts/sections/cta-band' ); ?>
 
 <?php get_footer(); ?>
+
 

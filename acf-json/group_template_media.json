@@ -1,4 +1,4 @@
-{
+﻿{
     "key": "group_template_media",
     "title": "Page — Media Template Fields",
     "fields": [
@@ -59,21 +59,8 @@
                     "placeholder": "https://www.youtube.com/shorts/..."
                 },
                 {
-                    "key": "field_short_bg",
-                    "label": "Gradient Color Style",
-                    "name": "short_bg",
-                    "type": "select",
-                    "choices": {
-                        "short-bg-1": "Deep Navy Blue (short-bg-1)",
-                        "short-bg-2": "Crimson Red (short-bg-2)",
-                        "short-bg-3": "Royal Blue to Crimson (short-bg-3)",
-                        "short-bg-4": "Emerald Green (short-bg-4)"
-                    },
-                    "default_value": "short-bg-1"
-                },
-                {
                     "key": "field_short_thumb",
-                    "label": "Custom Thumbnail Image (Optional — overrides gradient)",
+                    "label": "Custom Thumbnail Image (Optional — if blank, default video thumbnail is used)",
                     "name": "short_thumb",
                     "type": "image",
                     "return_format": "array",
@@ -114,20 +101,8 @@
                     "placeholder": "https://www.youtube.com/watch?v=..."
                 },
                 {
-                    "key": "field_yt_bg",
-                    "label": "Gradient Color Style",
-                    "name": "yt_bg",
-                    "type": "select",
-                    "choices": {
-                        "yt-bg-1": "Deep Navy (yt-bg-1)",
-                        "yt-bg-2": "Dark Crimson (yt-bg-2)",
-                        "yt-bg-3": "Charcoal Slate (yt-bg-3)"
-                    },
-                    "default_value": "yt-bg-1"
-                },
-                {
                     "key": "field_yt_thumb",
-                    "label": "Custom Thumbnail Image (Optional — overrides gradient)",
+                    "label": "Custom Thumbnail Image (Optional — if blank, YouTube thumbnail is fetched automatically)",
                     "name": "yt_thumb",
                     "type": "image",
                     "return_format": "array",
@@ -169,20 +144,8 @@
                     "placeholder": "https://..."
                 },
                 {
-                    "key": "field_news_bg",
-                    "label": "Gradient Color Style",
-                    "name": "news_bg",
-                    "type": "select",
-                    "choices": {
-                        "news-bg-1": "Emerald Green (news-bg-1)",
-                        "news-bg-2": "Navy Blue (news-bg-2)",
-                        "news-bg-3": "Crimson (news-bg-3)"
-                    },
-                    "default_value": "news-bg-1"
-                },
-                {
                     "key": "field_news_thumb",
-                    "label": "Custom Featured Image (Optional — overrides gradient)",
+                    "label": "Custom Thumbnail / Article Image",
                     "name": "news_thumb",
                     "type": "image",
                     "return_format": "array",

@@ -200,3 +200,49 @@ function vg_allowed_svg_tags() {
 	);
 }
 
+/**
+ * Extract YouTube Video ID from any standard or short URL.
+ *
+ * @param string $url Video URL.
+ * @return string|false YouTube Video ID or false.
+ */
+function vg_get_youtube_id( $url ) {
+	if ( empty( $url ) ) {
+		return false;
+	}
+	$pattern = '%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?|shorts)/|.*[?&]v=)|youtu\.be/)([^"&?/\s]{11})%i';
+	if ( preg_match( $pattern, $url, $match ) ) {
+		return $match[1];
+	}
+	return false;
+}
+
+/**
+ * Get Video Thumbnail URL.
+ * Priority: 1. Custom uploaded thumbnail -> 2. Automatic YouTube thumbnail -> 3. Fallback placeholder.
+ *
+ * @param string      $video_url     The video URL (YouTube, Vimeo, etc.).
+ * @param array|string $custom_thumb  ACF image array or URL.
+ * @return string Thumbnail image URL.
+ */
+function vg_get_video_thumbnail( $video_url = '', $custom_thumb = null ) {
+	// 1. Custom thumbnail image from ACF
+	if ( ! empty( $custom_thumb ) ) {
+		if ( is_array( $custom_thumb ) && ! empty( $custom_thumb['url'] ) ) {
+			return esc_url( $custom_thumb['url'] );
+		}
+		if ( is_string( $custom_thumb ) && ! empty( $custom_thumb ) ) {
+			return esc_url( $custom_thumb );
+		}
+	}
+
+	// 2. Automatic YouTube default thumbnail
+	$yt_id = vg_get_youtube_id( $video_url );
+	if ( $yt_id ) {
+		return 'https://img.youtube.com/vi/' . esc_attr( $yt_id ) . '/hqdefault.jpg';
+	}
+
+	return '';
+}
+
+
