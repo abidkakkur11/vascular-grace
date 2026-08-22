@@ -1,0 +1,179 @@
+﻿{
+    "key": "group_template_media",
+    "title": "Page — Media Template Fields",
+    "fields": [
+        {
+            "key": "field_media_tab_hero",
+            "label": "Hero Section",
+            "name": "",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_media_hero_title",
+            "label": "Hero Title (HTML allowed)",
+            "name": "media_hero_title",
+            "type": "textarea",
+            "rows": 3,
+            "default_value": "Media &\n<span class=\"hero-title-accent\">Press.</span>",
+            "instructions": "Supports span with hero-title-accent class for accent color. Use newlines for line breaks."
+        },
+        {
+            "key": "field_media_hero_subtitle",
+            "label": "Hero Subtitle",
+            "name": "media_hero_subtitle",
+            "type": "textarea",
+            "rows": 3,
+            "default_value": "Press mentions, awards, television appearances, and media coverage featuring Dr. S Srikanth Raju."
+        },
+        {
+            "key": "field_media_tab_press",
+            "label": "Press Mentions",
+            "name": "",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_press_items",
+            "label": "Press & News Articles",
+            "name": "press_items",
+            "type": "repeater",
+            "min": 0,
+            "max": 20,
+            "layout": "block",
+            "button_label": "Add Press Mention",
+            "sub_fields": [
+                {
+                    "key": "field_press_outlet",
+                    "label": "Publication / News Outlet Name",
+                    "name": "press_outlet",
+                    "type": "text",
+                    "placeholder": "The Times of India",
+                    "required": 1
+                },
+                {
+                    "key": "field_press_date",
+                    "label": "Date / Edition",
+                    "name": "press_date",
+                    "type": "text",
+                    "placeholder": "March 2025"
+                },
+                {
+                    "key": "field_press_headline",
+                    "label": "Article Headline / Topic",
+                    "name": "press_headline",
+                    "type": "textarea",
+                    "rows": 2,
+                    "placeholder": "Groundbreaking Minimally Invasive Surgery Restores Blood Flow in Complex Diabetic Foot Case",
+                    "required": 1
+                },
+                {
+                    "key": "field_press_url",
+                    "label": "Article / Press URL",
+                    "name": "press_url",
+                    "type": "url",
+                    "placeholder": "https://..."
+                },
+                {
+                    "key": "field_press_logo",
+                    "label": "Outlet Logo (Optional)",
+                    "name": "press_logo",
+                    "type": "image",
+                    "return_format": "array",
+                    "preview_size": "medium"
+                }
+            ]
+        },
+        {
+            "key": "field_media_tab_awards",
+            "label": "Awards & Recognition",
+            "name": "",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_awards",
+            "label": "Awards & Honors",
+            "name": "awards",
+            "type": "repeater",
+            "min": 0,
+            "max": 20,
+            "layout": "table",
+            "button_label": "Add Award",
+            "sub_fields": [
+                {
+                    "key": "field_award_title",
+                    "label": "Award / Recognition Title",
+                    "name": "award_title",
+                    "type": "text",
+                    "placeholder": "Excellence in Vascular Surgery Award",
+                    "required": 1
+                },
+                {
+                    "key": "field_award_institution",
+                    "label": "Presented By / Institution",
+                    "name": "award_institution",
+                    "type": "text",
+                    "placeholder": "Vascular Society of India"
+                },
+                {
+                    "key": "field_award_year",
+                    "label": "Year",
+                    "name": "award_year",
+                    "type": "text",
+                    "placeholder": "2024"
+                }
+            ]
+        },
+        {
+            "key": "field_media_tab_gallery",
+            "label": "Media Gallery",
+            "name": "",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_media_gallery",
+            "label": "Photo & Event Gallery",
+            "name": "media_gallery",
+            "type": "repeater",
+            "min": 0,
+            "max": 30,
+            "layout": "block",
+            "button_label": "Add Photo",
+            "sub_fields": [
+                {
+                    "key": "field_gallery_image",
+                    "label": "Image",
+                    "name": "gallery_image",
+                    "type": "image",
+                    "return_format": "array",
+                    "preview_size": "medium",
+                    "required": 1
+                },
+                {
+                    "key": "field_gallery_caption",
+                    "label": "Caption / Event Title",
+                    "name": "gallery_caption",
+                    "type": "text",
+                    "placeholder": "Speaking at the National Endovascular Symposium, 2024"
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "page-templates/template-media.php"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "active": true
+}

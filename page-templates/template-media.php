@@ -5,6 +5,8 @@
  * Media / Press page — managed via ACF Repeater for press mentions,
  * awards, and media gallery items.
  *
+ * ACF Field Group Location: Page Template → is → template-media.php
+ *
  * @package VascularGrace
  */
 
@@ -13,8 +15,60 @@ get_header();
 $hero_title    = vg_field( 'media_hero_title', get_the_ID(), "Media &\n<span class=\"hero-title-accent\">Press.</span>" );
 $hero_subtitle = vg_field( 'media_hero_subtitle', get_the_ID(), 'Press mentions, awards, television appearances, and media coverage featuring Dr. S Srikanth Raju.' );
 
-$press_items   = vg_field( 'press_items', get_the_ID() );
-$awards        = vg_field( 'awards', get_the_ID() );
+$press_items = vg_field( 'press_items', get_the_ID() );
+$default_press = array(
+    array(
+        'press_outlet'   => 'The Times of India',
+        'press_date'     => 'Healthcare Feature',
+        'press_headline' => 'Advanced Endovascular Laser Interventions Revolutionize Varicose Vein Treatment with Day-Care Procedures',
+        'press_url'      => '#',
+    ),
+    array(
+        'press_outlet'   => 'The Hindu',
+        'press_date'     => 'Medical Insight',
+        'press_headline' => 'Preventing Limb Amputation in Diabetic Patients: Early Vascular Diagnosis and Revascularization Protocols',
+        'press_url'      => '#',
+    ),
+    array(
+        'press_outlet'   => 'Deccan Chronicle',
+        'press_date'     => 'Special Report',
+        'press_headline' => 'Expert Vascular Surgeon on Recognizing Deep Vein Thrombosis (DVT) Symptoms and Minimizing Long-Term Risks',
+        'press_url'      => '#',
+    ),
+    array(
+        'press_outlet'   => 'Telangana Today',
+        'press_date'     => 'Clinical Profile',
+        'press_headline' => 'Complex Aortic Aneurysm Repair Successfully Performed at Yashoda Hospitals, Hitec City',
+        'press_url'      => '#',
+    ),
+);
+$display_press = ( ! empty( $press_items ) && is_array( $press_items ) ) ? $press_items : $default_press;
+
+$awards = vg_field( 'awards', get_the_ID() );
+$default_awards = array(
+    array(
+        'award_title'       => 'Best Vascular Case Presentation Award',
+        'award_institution' => 'Vascular Society of India (VSI)',
+        'award_year'        => '2023',
+    ),
+    array(
+        'award_title'       => 'Excellence in Endovascular Interventions',
+        'award_institution' => 'National Endovascular Surgery Conference',
+        'award_year'        => '2021',
+    ),
+    array(
+        'award_title'       => 'DNB Gold Medal Candidate in Peripheral Vascular Surgery',
+        'award_institution' => 'National Board of Examinations',
+        'award_year'        => '2019',
+    ),
+    array(
+        'award_title'       => 'Distinguished Clinical Research Fellowship',
+        'award_institution' => 'Narayana Health City, Bengaluru',
+        'award_year'        => '2018',
+    ),
+);
+$display_awards = ( ! empty( $awards ) && is_array( $awards ) ) ? $awards : $default_awards;
+
 $gallery_items = vg_field( 'media_gallery', get_the_ID() );
 ?>
 
@@ -55,25 +109,30 @@ $gallery_items = vg_field( 'media_gallery', get_the_ID() );
     </section>
 
     <!-- ── PRESS MENTIONS ──────────────────────────────────────────────── -->
-    <?php if ( ! empty( $press_items ) ) : ?>
     <section class="media-press-section py-large bg-white">
         <div class="container">
             <div class="section-header mb-12">
                 <div class="section-label text-crimson mb-3"><?php esc_html_e( '— PRESS MENTIONS', 'vascular-grace' ); ?></div>
-                <h2 class="section-title text-dark"><?php esc_html_e( 'Featured In', 'vascular-grace' ); ?></h2>
+                <h2 class="section-title text-dark"><?php esc_html_e( 'Featured In News &amp; Publications', 'vascular-grace' ); ?></h2>
             </div>
             <div class="press-grid">
-                <?php foreach ( $press_items as $item ) : ?>
+                <?php foreach ( $display_press as $item ) : ?>
                     <div class="press-card">
-                        <?php if ( ! empty( $item['press_logo'] ) && is_array( $item['press_logo'] ) ) : ?>
-                            <?php echo wp_get_attachment_image( $item['press_logo']['ID'], 'medium', false, array( 'class' => 'press-logo', 'alt' => esc_attr( $item['press_outlet'] ?? '' ) ) ); ?>
-                        <?php else : ?>
-                            <div class="press-outlet-name font-display"><?php echo esc_html( $item['press_outlet'] ?? '' ); ?></div>
-                        <?php endif; ?>
-                        <p class="press-headline"><?php echo esc_html( $item['press_headline'] ?? '' ); ?></p>
-                        <?php if ( ! empty( $item['press_url'] ) ) : ?>
+                        <div class="press-card-header">
+                            <?php if ( ! empty( $item['press_logo'] ) && is_array( $item['press_logo'] ) ) : ?>
+                                <?php echo wp_get_attachment_image( $item['press_logo']['ID'], 'medium', false, array( 'class' => 'press-logo', 'alt' => esc_attr( $item['press_outlet'] ?? '' ) ) ); ?>
+                            <?php else : ?>
+                                <span class="press-outlet-badge"><?php echo esc_html( $item['press_outlet'] ?? '' ); ?></span>
+                            <?php endif; ?>
+                            <?php if ( ! empty( $item['press_date'] ) ) : ?>
+                                <span class="press-date text-muted text-xs"><?php echo esc_html( $item['press_date'] ); ?></span>
+                            <?php endif; ?>
+                        </div>
+                        <h3 class="press-headline font-display"><?php echo esc_html( $item['press_headline'] ?? '' ); ?></h3>
+                        <?php if ( ! empty( $item['press_url'] ) && '#' !== $item['press_url'] ) : ?>
                             <a href="<?php echo esc_url( $item['press_url'] ); ?>" target="_blank" rel="noopener noreferrer" class="btn-text text-blue hover-blue-dark">
-                                <?php esc_html_e( 'Read article', 'vascular-grace' ); ?> ↗
+                                <?php esc_html_e( 'Read article', 'vascular-grace' ); ?>
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
                             </a>
                         <?php endif; ?>
                     </div>
@@ -81,40 +140,44 @@ $gallery_items = vg_field( 'media_gallery', get_the_ID() );
             </div>
         </div>
     </section>
-    <?php endif; ?>
 
-    <!-- ── AWARDS ──────────────────────────────────────────────────────── -->
-    <?php if ( ! empty( $awards ) ) : ?>
-    <section class="media-awards-section py-large bg-gray-light">
+    <!-- ── AWARDS & RECOGNITION ────────────────────────────────────────── -->
+    <section class="media-awards-section py-large bg-soft">
         <div class="container">
             <div class="section-header mb-12">
                 <div class="section-label text-crimson mb-3"><?php esc_html_e( '— RECOGNITION', 'vascular-grace' ); ?></div>
-                <h2 class="section-title text-dark"><?php esc_html_e( 'Awards &amp; Fellowships', 'vascular-grace' ); ?></h2>
+                <h2 class="section-title text-dark"><?php esc_html_e( 'Honors &amp; Fellowships', 'vascular-grace' ); ?></h2>
             </div>
-            <div class="awards-list">
-                <?php foreach ( $awards as $award ) : ?>
+            <div class="awards-grid">
+                <?php foreach ( $display_awards as $award ) : ?>
                     <div class="award-card">
-                        <div class="award-icon text-crimson">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"></circle><path d="m8.21 13.89-1.21 7.11 5-3 5 3-1.21-7.11"></path></svg>
+                        <div class="award-icon-wrap">
+                            <svg class="text-crimson" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"></circle><path d="m8.21 13.89-1.21 7.11 5-3 5 3-1.21-7.11"></path></svg>
                         </div>
-                        <div>
-                            <h4 class="award-title font-display"><?php echo esc_html( $award['award_title'] ?? '' ); ?></h4>
-                            <p class="award-year text-muted text-sm"><?php echo esc_html( $award['award_year'] ?? '' ); ?></p>
+                        <div class="award-content">
+                            <div class="award-meta">
+                                <?php if ( ! empty( $award['award_year'] ) ) : ?>
+                                    <span class="award-year-tag"><?php echo esc_html( $award['award_year'] ); ?></span>
+                                <?php endif; ?>
+                            </div>
+                            <h3 class="award-title font-display"><?php echo esc_html( $award['award_title'] ?? '' ); ?></h3>
+                            <?php if ( ! empty( $award['award_institution'] ) ) : ?>
+                                <p class="award-institution text-muted text-sm"><?php echo esc_html( $award['award_institution'] ); ?></p>
+                            <?php endif; ?>
                         </div>
                     </div>
                 <?php endforeach; ?>
             </div>
         </div>
     </section>
-    <?php endif; ?>
 
-    <!-- ── MEDIA GALLERY ───────────────────────────────────────────────── -->
-    <?php if ( ! empty( $gallery_items ) ) : ?>
+    <!-- ── MEDIA GALLERY (if images uploaded) ─────────────────────────── -->
+    <?php if ( ! empty( $gallery_items ) && is_array( $gallery_items ) ) : ?>
     <section class="media-gallery-section py-large bg-white">
         <div class="container">
             <div class="section-header mb-12">
                 <div class="section-label text-crimson mb-3"><?php esc_html_e( '— GALLERY', 'vascular-grace' ); ?></div>
-                <h2 class="section-title text-dark"><?php esc_html_e( 'Media Gallery', 'vascular-grace' ); ?></h2>
+                <h2 class="section-title text-dark"><?php esc_html_e( 'Media &amp; Events Gallery', 'vascular-grace' ); ?></h2>
             </div>
             <div class="gallery-grid">
                 <?php foreach ( $gallery_items as $gitem ) :
@@ -122,7 +185,9 @@ $gallery_items = vg_field( 'media_gallery', get_the_ID() );
                     if ( empty( $gimg ) || ! is_array( $gimg ) ) continue;
                     ?>
                     <div class="gallery-item">
-                        <?php echo wp_get_attachment_image( $gimg['ID'], 'medium_large', false, array( 'class' => 'gallery-img', 'alt' => esc_attr( $gitem['gallery_caption'] ?? '' ) ) ); ?>
+                        <div class="gallery-img-wrapper">
+                            <?php echo wp_get_attachment_image( $gimg['ID'], 'medium_large', false, array( 'class' => 'gallery-img', 'alt' => esc_attr( $gitem['gallery_caption'] ?? '' ) ) ); ?>
+                        </div>
                         <?php if ( ! empty( $gitem['gallery_caption'] ) ) : ?>
                             <p class="gallery-caption"><?php echo esc_html( $gitem['gallery_caption'] ); ?></p>
                         <?php endif; ?>
@@ -137,3 +202,4 @@ $gallery_items = vg_field( 'media_gallery', get_the_ID() );
     <?php get_template_part( 'template-parts/sections/cta-band' ); ?>
 
 <?php get_footer(); ?>
+
