@@ -509,28 +509,32 @@ h3 { font-size: 1.25rem; }
 
 .vascular-image {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    max-width: 100%;
-    height: 92%;
-    width: auto;
-    opacity: 0.35;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+    opacity: 0.28;
     animation: 6s ease-in-out infinite pulseVessel;
     pointer-events: none;
-    filter: drop-shadow(0 0 10px rgba(205, 36, 60, 0.2));
+    filter: drop-shadow(0 0 10px rgba(205, 36, 60, 0.15));
+}
+
+@media (max-width: 768px) {
+    .vascular-image {
+        opacity: 0.18;
+        object-position: center 30%;
+    }
 }
 
 @keyframes pulseVessel {
     0%, 100% {
-        opacity: 0.28;
-        filter: drop-shadow(0 0 6px rgba(205, 36, 60, 0.15));
-        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.22;
+        filter: drop-shadow(0 0 6px rgba(205, 36, 60, 0.12));
     }
     50% {
-        opacity: 0.5;
-        filter: drop-shadow(0 0 16px rgba(205, 36, 60, 0.35));
-        transform: translate(-50%, -50%) scale(1.03);
+        opacity: 0.38;
+        filter: drop-shadow(0 0 16px rgba(205, 36, 60, 0.25));
     }
 }
 
@@ -2254,8 +2258,8 @@ input[type="submit"]:hover,
 /* About Section Spacing & Headers */
 .about-hero-section {
     position: relative;
-    padding-top: 11.5rem;
-    padding-bottom: 9.5rem;
+    padding-top: 9.5rem;
+    padding-bottom: 7rem;
     background: #070a13;
     overflow: hidden;
 }
@@ -2265,15 +2269,30 @@ input[type="submit"]:hover,
 .about-journey-section,
 .about-research-section,
 .about-philosophy-section {
-    padding: 6.5rem 0;
+    padding: 4.5rem 0;
+}
+
+@media (max-width: 768px) {
+    .about-hero-section {
+        padding-top: 7.5rem;
+        padding-bottom: 5.5rem;
+    }
+
+    .about-intro-section,
+    .about-education-section,
+    .about-journey-section,
+    .about-research-section,
+    .about-philosophy-section {
+        padding: 3.25rem 0;
+    }
 }
 
 .section-header {
-    margin-bottom: 3.5rem;
+    margin-bottom: 2.25rem;
 }
 
 .about-intro-text {
-    margin-bottom: 3.5rem;
+    margin-bottom: 2.25rem;
 }
 
 /* About Hero */

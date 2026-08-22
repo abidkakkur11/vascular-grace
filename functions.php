@@ -170,6 +170,7 @@ add_filter( 'acf/settings/load_json', 'vascular_grace_acf_json_load_point' );
  * ========================================================= */
 require get_template_directory() . '/inc/helpers.php';
 require get_template_directory() . '/inc/theme-options.php';
+require get_template_directory() . '/inc/license.php';
 
 
 /* =========================================================

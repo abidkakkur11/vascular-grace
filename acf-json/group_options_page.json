@@ -307,6 +307,21 @@
             "type": "textarea",
             "rows": 5,
             "instructions": "Custom scripts before </body>. Use with care."
+        },
+        {
+            "key": "field_tab_license",
+            "label": "License Activation",
+            "name": "",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_theme_license_key",
+            "label": "Theme License Key",
+            "name": "theme_license_key",
+            "type": "text",
+            "placeholder": "VG-XXXX-XXXX-XXXX",
+            "instructions": "Enter the official license key provided upon final project handover to verify production deployment."
         }
     ],
     "location": [
