@@ -1,4 +1,4 @@
-﻿{
+{
     "key": "group_template_media",
     "title": "Page — Media Template Fields",
     "fields": [
@@ -197,6 +197,13 @@
                 "param": "page_template",
                 "operator": "==",
                 "value": "page-templates/template-media.php"
+            }
+        ],
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "template-media.php"
             }
         ]
     ],
