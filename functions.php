@@ -161,25 +161,6 @@ function vascular_grace_acf_json_load_point( $paths ) {
 }
 add_filter( 'acf/settings/load_json', 'vascular_grace_acf_json_load_point' );
 
-// Auto-register local JSON field groups directly into PHP memory
-// Ensures field groups load instantly even without manual DB syncing
-function vascular_grace_register_acf_json_groups() {
-	if ( function_exists( 'acf_add_local_field_group' ) ) {
-		$json_files = glob( get_template_directory() . '/acf-json/*.json' );
-		if ( ! empty( $json_files ) ) {
-			foreach ( $json_files as $file ) {
-				$content = file_get_contents( $file );
-				if ( $content ) {
-					$json = json_decode( $content, true );
-					if ( is_array( $json ) && ! empty( $json['key'] ) ) {
-						acf_add_local_field_group( $json );
-					}
-				}
-			}
-		}
-	}
-}
-add_action( 'acf/init', 'vascular_grace_register_acf_json_groups', 5 );
 
 
 
