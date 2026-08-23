@@ -78,7 +78,7 @@
                         if ( $modal_services->have_posts() ) :
                             while ( $modal_services->have_posts() ) : $modal_services->the_post();
                                 ?>
-                                <option value="<?php echo esc_attr( get_the_title() ); ?>"><?php the_title(); ?></option>
+                                <option value="<?php echo esc_attr( get_the_title() ); ?>"><?php echo esc_html( get_the_title() ); ?></option>
                                 <?php
                             endwhile;
                             wp_reset_postdata();
@@ -87,14 +87,14 @@
                             $options = array(
                                 'Varicose Veins'          => 'Varicose Veins (Laser / RFA / Glue)',
                                 'Peripheral Artery Disease' => 'Peripheral Artery Disease (PAD)',
-                                'Diabetic Foot Care'      => 'Diabetic &amp; Ischemic Foot Care',
+                                'Diabetic Foot Care'      => 'Diabetic & Ischemic Foot Care',
                                 'Deep Vein Thrombosis'    => 'Deep Vein Thrombosis (DVT)',
-                                'AV Fistula &amp; Dialysis Access' => 'AV Fistula &amp; Dialysis Access',
-                                'Carotid Artery Disease'  => 'Carotid Artery Disease &amp; Stroke Prevention',
-                                'Aortic Aneurysm'         => 'Aortic Aneurysm &amp; Endovascular Repair',
+                                'AV Fistula & Dialysis Access' => 'AV Fistula & Dialysis Access',
+                                'Carotid Artery Disease'  => 'Carotid Artery Disease & Stroke Prevention',
+                                'Aortic Aneurysm'         => 'Aortic Aneurysm & Endovascular Repair',
                             );
                             foreach ( $options as $val => $label ) {
-                                printf( '<option value="%s">%s</option>', esc_attr( $val ), wp_kses( $label, array() ) );
+                                printf( '<option value="%s">%s</option>', esc_attr( $val ), esc_html( $label ) );
                             }
                         endif;
                         ?>

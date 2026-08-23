@@ -37,6 +37,9 @@ function vascular_grace_setup() {
 		'script',
 	) );
 
+	// Responsive oEmbed wrapping
+	add_theme_support( 'responsive-embeds' );
+
 	// Custom logo (in addition to ACF logo field on Options page)
 	add_theme_support( 'custom-logo', array(
 		'height'      => 80,

@@ -25,7 +25,7 @@ $cta_btn_txt = vg_field( 'cta_btn_text', get_the_ID() ) ?: vg_option( 'cta_btn_t
 $default_benefits = array(
     __( 'World-class endovascular suite', 'vascular-grace' ),
     __( 'Same-day minimally invasive procedures', 'vascular-grace' ),
-    __( 'Transparent pricing &amp; insurance help', 'vascular-grace' ),
+    __( 'Transparent pricing & insurance help', 'vascular-grace' ),
     __( 'Structured long-term follow-up', 'vascular-grace' ),
 );
 $benefits = vg_field( 'cta_benefits', get_the_ID() ) ?: vg_option( 'cta_benefits' );

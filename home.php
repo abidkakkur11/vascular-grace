@@ -19,7 +19,7 @@ $blog_page_id = get_option( 'page_for_posts' );
 $hero_title    = vg_field( 'blogs_hero_title', $blog_page_id, "Medical insights &\n<span class=\"hero-title-accent\">health articles.</span>" );
 $hero_subtitle = vg_field( 'blogs_hero_subtitle', $blog_page_id, 'Evidence-based articles on vascular health, treatment options, and patient guidance from Dr. S Srikanth Raju.' );
 
-$paged = get_query_var( 'paged' ) ?: 1;
+$paged = (int) get_query_var( 'paged' ) ?: 1;
 ?>
 
     <!-- ── PAGE HERO ───────────────────────────────────────────────────── -->

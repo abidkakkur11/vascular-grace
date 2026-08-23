@@ -74,7 +74,7 @@
                         if ( $footer_services->have_posts() ) :
                             while ( $footer_services->have_posts() ) : $footer_services->the_post();
                                 ?>
-                                <li><a href="<?php echo esc_url( home_url( '/services/' ) ); ?>"><?php the_title(); ?></a></li>
+                                <li><a href="<?php echo esc_url( home_url( '/services/' ) ); ?>"><?php echo esc_html( get_the_title() ); ?></a></li>
                                 <?php
                             endwhile;
                             wp_reset_postdata();
@@ -82,16 +82,16 @@
                             // Static fallback matching original HTML
                             $fallback_services = array(
                                 'Varicose Vein Laser / RFA / Glue',
-                                'DVT — Thrombolysis &amp; Stenting',
+                                'DVT — Thrombolysis & Stenting',
                                 'Peripheral Arterial Disease',
-                                'Diabetic &amp; Ischemic Foot Care',
-                                'AV Fistula &amp; Salvage',
-                                'Aneurysm &amp; Aortic Repair',
+                                'Diabetic & Ischemic Foot Care',
+                                'AV Fistula & Salvage',
+                                'Aneurysm & Aortic Repair',
                             );
                             $services_url = esc_url( home_url( '/services/' ) );
                             foreach ( $fallback_services as $svc ) :
                                 ?>
-                                <li><a href="<?php echo $services_url; ?>"><?php echo wp_kses( $svc, array() ); ?></a></li>
+                                <li><a href="<?php echo $services_url; ?>"><?php echo esc_html( $svc ); ?></a></li>
                                 <?php
                             endforeach;
                         endif;
