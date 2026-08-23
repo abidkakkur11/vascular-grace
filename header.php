@@ -86,6 +86,12 @@
 
         <!-- Mobile Offcanvas Nav -->
         <nav class="mobile-nav" id="mobile-nav" aria-label="<?php esc_attr_e( 'Mobile Navigation', 'vascular-grace' ); ?>">
+            <div class="mobile-nav-header">
+                <span class="mobile-nav-title"><?php esc_html_e( 'Menu', 'vascular-grace' ); ?></span>
+                <button type="button" class="mobile-nav-close-btn" id="mobile-nav-close-btn" aria-label="<?php esc_attr_e( 'Close Menu', 'vascular-grace' ); ?>">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+            </div>
             <div class="mobile-nav-links">
                 <?php
                 // Merge both menus for mobile — show all links

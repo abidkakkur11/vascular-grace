@@ -14,17 +14,20 @@
 get_header();
 
 // ── Field defaults ──────────────────────────────────────────────────────────
-$hero_subtitle  = vg_field( 'hero_subtitle', get_the_ID(), 'DEPARTMENT' );
 $hero_title     = vg_field( 'hero_title', get_the_ID(), 'Vascular <span class="text-crimson italic amp">&amp;</span> Endovascular<br><span class="text-blue highlight">Surgery.</span>' );
 $hero_desc      = vg_field( 'hero_desc', get_the_ID(), 'From varicose veins to complex aortic aneurysms — precision care for the arteries, veins and lymphatics that keep you moving. Trained in both open and endovascular technique, chosen because the vessel decides, not the surgeon.' );
 $hero_doc_image = vg_field( 'hero_doctor_image', get_the_ID() );
 $hero_vas_image = vg_field( 'hero_vascular_image', get_the_ID() );
 
-$about_title   = vg_field( 'about_section_title', get_the_ID(), 'A vascular specialist committed to precision and compassion.' );
-$about_desc    = vg_field( 'about_section_desc', get_the_ID(), 'Dr. S Srikanth Raju is a Senior Consultant Vascular &amp; Endovascular Surgeon and Clinical Director at Yashoda Hospitals, Hitec City. With 16+ years of experience, he is one of India\'s few vascular surgeons trained in both open and endovascular procedures.' );
-$about_cta_url = vg_field( 'about_cta_url', get_the_ID(), home_url( '/about/' ) );
-$exp_years     = vg_field( 'exp_badge_years', get_the_ID(), '16+' );
-$exp_label     = vg_field( 'exp_badge_label', get_the_ID(), 'CLINICAL PRACTICE' );
+$about_title       = vg_field( 'about_section_title', get_the_ID(), 'A vascular specialist committed to precision and compassion.' );
+$about_desc        = vg_field( 'about_section_desc', get_the_ID(), 'Dr. S Srikanth Raju is a Senior Consultant Vascular &amp; Endovascular Surgeon and Clinical Director at Yashoda Hospitals, Hitec City. With 16+ years of experience, he is one of India\'s few vascular surgeons trained in both open and endovascular procedures.' );
+$about_cta_url     = vg_field( 'about_cta_url', get_the_ID(), home_url( '/about/' ) );
+$exp_years         = vg_field( 'exp_badge_years', get_the_ID(), '16+' );
+$exp_label         = vg_field( 'exp_badge_label', get_the_ID(), 'CLINICAL PRACTICE' );
+$about_media_type  = vg_field( 'about_card_media_type', get_the_ID(), 'default' );
+$about_card_img    = vg_field( 'about_card_image', get_the_ID() );
+$about_card_vid    = vg_field( 'about_card_video', get_the_ID() );
+$about_card_post   = vg_field( 'about_card_video_poster', get_the_ID() );
 
 $serv_title    = vg_field( 'services_section_title', get_the_ID(), 'Advanced vascular treatments, tailored to you.' );
 $serv_desc     = vg_field( 'services_section_desc', get_the_ID(), 'From varicose veins to complex arterial disease — modern, minimally invasive care with faster recovery and lasting results.' );
@@ -84,7 +87,6 @@ $display_faqs  = ( ! empty( $faqs ) && is_array( $faqs ) ) ? $faqs : $default_fa
 
         <div class="container hero-container relative z-10">
             <div class="hero-content">
-                <p class="hero-subtitle"><span class="line bg-crimson"></span> <?php echo esc_html( $hero_subtitle ); ?></p>
                 <h1 class="hero-title">
                     <?php echo wp_kses_post( $hero_title ); ?>
                 </h1>
@@ -116,15 +118,32 @@ $display_faqs  = ( ! empty( $faqs ) && is_array( $faqs ) ) ? $faqs : $default_fa
         <div class="container about-grid">
             <div class="about-image-column relative">
                 <div class="about-image-card">
-                    <div class="about-card-bg">
-                        <svg class="about-vascular-svg" viewBox="0 0 300 400" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M150,30 V370" stroke="rgba(55, 91, 182, 0.7)" stroke-width="2" stroke-dasharray="6 8"/>
-                            <path d="M140,50 C140,150 120,250 140,360" stroke="rgba(205, 36, 60, 0.6)" stroke-width="1.5" stroke-dasharray="5 7"/>
-                            <path d="M160,50 C160,150 180,250 160,360" stroke="rgba(205, 36, 60, 0.6)" stroke-width="1.5" stroke-dasharray="5 7"/>
-                            <path d="M130,80 C130,180 100,280 130,350" stroke="rgba(55, 91, 182, 0.4)" stroke-width="1" stroke-dasharray="4 6"/>
-                            <path d="M170,80 C170,180 200,280 170,350" stroke="rgba(55, 91, 182, 0.4)" stroke-width="1" stroke-dasharray="4 6"/>
-                        </svg>
-                    </div>
+                    <?php if ( 'video' === $about_media_type && ! empty( $about_card_vid ) ) : ?>
+                        <?php
+                        $vid_url    = is_array( $about_card_vid ) ? ( $about_card_vid['url'] ?? '' ) : $about_card_vid;
+                        $poster_url = is_array( $about_card_post ) ? ( $about_card_post['url'] ?? '' ) : ( $about_card_post ?: '' );
+                        ?>
+                        <video class="about-card-media" autoplay muted loop playsinline<?php echo $poster_url ? ' poster="' . esc_url( $poster_url ) . '"' : ''; ?>>
+                            <source src="<?php echo esc_url( $vid_url ); ?>" type="video/mp4">
+                        </video>
+                    <?php elseif ( ( 'image' === $about_media_type || ! empty( $about_card_img ) ) && ! empty( $about_card_img ) ) : ?>
+                        <?php if ( is_array( $about_card_img ) && ! empty( $about_card_img['ID'] ) ) : ?>
+                            <?php echo wp_get_attachment_image( $about_card_img['ID'], 'large', false, array( 'class' => 'about-card-media', 'alt' => esc_attr( $about_title ) ) ); ?>
+                        <?php else : ?>
+                            <?php $img_src = is_array( $about_card_img ) ? ( $about_card_img['url'] ?? '' ) : $about_card_img; ?>
+                            <img src="<?php echo esc_url( $img_src ); ?>" alt="<?php echo esc_attr( $about_title ); ?>" class="about-card-media">
+                        <?php endif; ?>
+                    <?php else : ?>
+                        <div class="about-card-bg">
+                            <svg class="about-vascular-svg" viewBox="0 0 300 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M150,30 V370" stroke="rgba(55, 91, 182, 0.7)" stroke-width="2" stroke-dasharray="6 8"/>
+                                <path d="M140,50 C140,150 120,250 140,360" stroke="rgba(205, 36, 60, 0.6)" stroke-width="1.5" stroke-dasharray="5 7"/>
+                                <path d="M160,50 C160,150 180,250 160,360" stroke="rgba(205, 36, 60, 0.6)" stroke-width="1.5" stroke-dasharray="5 7"/>
+                                <path d="M130,80 C130,180 100,280 130,350" stroke="rgba(55, 91, 182, 0.4)" stroke-width="1" stroke-dasharray="4 6"/>
+                                <path d="M170,80 C170,180 200,280 170,350" stroke="rgba(55, 91, 182, 0.4)" stroke-width="1" stroke-dasharray="4 6"/>
+                            </svg>
+                        </div>
+                    <?php endif; ?>
                     <div class="about-card-overlay">
                         <div class="overlay-icon text-crimson">
                             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"></circle><path d="m8.21 13.89-1.21 7.11 5-3 5 3-1.21-7.11"></path></svg>

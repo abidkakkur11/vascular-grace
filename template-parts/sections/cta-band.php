@@ -17,10 +17,10 @@
 
 $phone = vg_get_phone();
 
-$cta_heading = vg_field( 'cta_heading', get_the_ID(), __( "Take the first step\ntoward healthy\ncirculation.", 'vascular-grace' ) );
-$cta_desc    = vg_field( 'cta_desc', get_the_ID(), __( 'Book a private consultation with Dr. Srikanth Raju. Most patients receive a treatment plan within their first visit.', 'vascular-grace' ) );
-$cta_btn_url = vg_field( 'cta_btn_url', get_the_ID(), '#book' );
-$cta_btn_txt = vg_field( 'cta_btn_text', get_the_ID(), __( 'Book Appointment', 'vascular-grace' ) );
+$cta_heading = vg_field( 'cta_heading', get_the_ID() ) ?: vg_option( 'cta_heading', __( "Take the first step\ntoward healthy\ncirculation.", 'vascular-grace' ) );
+$cta_desc    = vg_field( 'cta_desc', get_the_ID() ) ?: vg_option( 'cta_desc', __( 'Book a private consultation with Dr. Srikanth Raju. Most patients receive a treatment plan within their first visit.', 'vascular-grace' ) );
+$cta_btn_url = vg_field( 'cta_btn_url', get_the_ID() ) ?: vg_option( 'cta_btn_url', '#book' );
+$cta_btn_txt = vg_field( 'cta_btn_text', get_the_ID() ) ?: vg_option( 'cta_btn_text', __( 'Book Appointment', 'vascular-grace' ) );
 
 $default_benefits = array(
     __( 'World-class endovascular suite', 'vascular-grace' ),
@@ -28,7 +28,7 @@ $default_benefits = array(
     __( 'Transparent pricing &amp; insurance help', 'vascular-grace' ),
     __( 'Structured long-term follow-up', 'vascular-grace' ),
 );
-$benefits = vg_field( 'cta_benefits', get_the_ID() );
+$benefits = vg_field( 'cta_benefits', get_the_ID() ) ?: vg_option( 'cta_benefits' );
 ?>
 <!-- CTA Band -->
 <section class="cta-section py-large bg-white">

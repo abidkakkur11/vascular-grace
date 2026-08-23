@@ -15,10 +15,6 @@
     <div class="modal-card">
         <div class="modal-header">
             <div>
-                <span class="modal-badge">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-                    <?php esc_html_e( 'Priority Consultation', 'vascular-grace' ); ?>
-                </span>
                 <h3 class="modal-title" id="modal-title"><?php esc_html_e( 'Book an Appointment', 'vascular-grace' ); ?></h3>
                 <p class="modal-subtitle">
                     <?php

@@ -1,6 +1,6 @@
 {
     "key": "group_options_page",
-    "title": "Theme Settings — Global Options",
+    "title": "Theme Settings - Global Options",
     "fields": [
         {
             "key": "field_tab_brand",
@@ -73,6 +73,39 @@
             "type": "text",
             "default_value": "499 Google reviews",
             "placeholder": "499 Google reviews"
+        },
+        {
+            "key": "field_footer_columns_count",
+            "label": "Footer Layout Columns",
+            "name": "footer_columns_count",
+            "type": "select",
+            "choices": {
+                "3": "3 Columns (Brand · Explore Links · Practice & Consultation)",
+                "4": "4 Columns (Brand · Explore Links · Services · Practice & Consultation)"
+            },
+            "default_value": "3",
+            "allow_null": 0,
+            "multiple": 0,
+            "return_format": "value",
+            "instructions": "Select the number of columns to display in the website footer. Currently set to 3 columns without Services."
+        },
+        {
+            "key": "field_footer_show_services",
+            "label": "Display Services Column in Footer",
+            "name": "footer_show_services",
+            "type": "true_false",
+            "ui": 1,
+            "default_value": 0,
+            "instructions": "Toggle ON if you want to display the Services column in the footer in the future."
+        },
+        {
+            "key": "field_footer_watermark_text",
+            "label": "Footer Watermark Text",
+            "name": "footer_watermark_text",
+            "type": "text",
+            "default_value": "Dr. S Srikanth Raju",
+            "placeholder": "e.g. Dr. S Srikanth Raju",
+            "instructions": "Lightly visible watermark text rendered in the footer background. Leave blank to hide."
         },
         {
             "key": "field_copyright_text",
@@ -307,6 +340,69 @@
             "type": "textarea",
             "rows": 5,
             "instructions": "Custom scripts before </body>. Use with care."
+        },
+        {
+            "key": "field_tab_cta_band",
+            "label": "CTA Band (Footer Banner)",
+            "name": "",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_global_cta_heading",
+            "label": "CTA Heading",
+            "name": "cta_heading",
+            "type": "textarea",
+            "rows": 3,
+            "default_value": "Take the first step\ntoward healthy\ncirculation.",
+            "placeholder": "Take the first step\ntoward healthy\ncirculation.",
+            "instructions": "Main headline in the dark CTA banner above the footer."
+        },
+        {
+            "key": "field_global_cta_desc",
+            "label": "CTA Description",
+            "name": "cta_desc",
+            "type": "textarea",
+            "rows": 3,
+            "default_value": "Book a private consultation with Dr. Srikanth Raju. Most patients receive a treatment plan within their first visit.",
+            "placeholder": "Book a private consultation with Dr. Srikanth Raju..."
+        },
+        {
+            "key": "field_global_cta_btn_text",
+            "label": "CTA Button Text",
+            "name": "cta_btn_text",
+            "type": "text",
+            "default_value": "Book Appointment",
+            "placeholder": "Book Appointment"
+        },
+        {
+            "key": "field_global_cta_btn_url",
+            "label": "CTA Button URL",
+            "name": "cta_btn_url",
+            "type": "text",
+            "default_value": "#book",
+            "placeholder": "#book",
+            "instructions": "Use #book to open the appointment popup modal, or enter an external URL."
+        },
+        {
+            "key": "field_global_cta_benefits",
+            "label": "CTA Benefit Bullet Points",
+            "name": "cta_benefits",
+            "type": "repeater",
+            "instructions": "Add or customize the bullet points displayed on the right side of the CTA band banner.",
+            "min": 0,
+            "max": 8,
+            "layout": "table",
+            "button_label": "Add Bullet Point",
+            "sub_fields": [
+                {
+                    "key": "field_cta_benefit_text",
+                    "label": "Bullet Point Text",
+                    "name": "benefit_text",
+                    "type": "text",
+                    "placeholder": "e.g. Same-day minimally invasive procedures"
+                }
+            ]
         },
         {
             "key": "field_tab_license",

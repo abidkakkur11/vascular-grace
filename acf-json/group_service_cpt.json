@@ -21,35 +21,18 @@
             "placeholder": "<svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\">...</svg>"
         },
         {
-            "key": "field_service_thumbnail",
-            "label": "Service Thumbnail (optional)",
-            "name": "service_thumbnail",
-            "type": "image",
-            "return_format": "array",
-            "preview_size": "medium",
-            "instructions": "Optional thumbnail image. If provided, used in the service single page hero."
-        },
-        {
-            "key": "field_service_description",
-            "label": "Full Description",
-            "name": "service_description",
-            "type": "wysiwyg",
-            "toolbar": "basic",
-            "media_upload": 0,
-            "instructions": "Full rich-text description for the service single page."
-        },
-        {
             "key": "field_service_cta_type",
             "label": "CTA Behaviour",
             "name": "service_cta_type",
             "type": "select",
             "choices": {
-                "modal": "Open Booking Popup (default — matches current site behaviour)",
+                "modal": "Open Booking Popup (default)",
+                "page": "Open Dedicated Standalone Service Page",
                 "url": "Link to Custom URL"
             },
             "default_value": "modal",
             "return_format": "value",
-            "instructions": "Controls what happens when a visitor clicks 'Learn more' on this service card. Default preserves original site behaviour (opens the #book modal)."
+            "instructions": "Controls what happens when a visitor clicks on this service card. 'modal' opens the quick booking popup, 'page' navigates to the full standalone service page, and 'url' links to a custom destination."
         },
         {
             "key": "field_service_cta_url",
@@ -64,6 +47,253 @@
                         "field": "field_service_cta_type",
                         "operator": "==",
                         "value": "url"
+                    }
+                ]
+            ]
+        },
+        {
+            "key": "field_service_badge",
+            "label": "Procedure Badge / Category",
+            "name": "service_badge",
+            "type": "text",
+            "placeholder": "e.g. Minimally Invasive Laser Therapy",
+            "instructions": "Small highlighted pill badge shown above the title on the standalone service page.",
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_service_cta_type",
+                        "operator": "==",
+                        "value": "page"
+                    }
+                ]
+            ]
+        },
+        {
+            "key": "field_service_hero_subtitle",
+            "label": "Hero Subtitle",
+            "name": "service_hero_subtitle",
+            "type": "textarea",
+            "rows": 3,
+            "placeholder": "e.g. Advanced endovenous laser ablation (EVLA) and medical glue therapy with same-day discharge and zero surgical incisions.",
+            "instructions": "Introductory explanation shown in the dark hero banner on the standalone service page.",
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_service_cta_type",
+                        "operator": "==",
+                        "value": "page"
+                    }
+                ]
+            ]
+        },
+        {
+            "key": "field_service_spec_duration",
+            "label": "Procedure Duration",
+            "name": "service_spec_duration",
+            "type": "text",
+            "default_value": "30–45 Mins",
+            "placeholder": "30–45 Mins",
+            "instructions": "Typical procedure time.",
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_service_cta_type",
+                        "operator": "==",
+                        "value": "page"
+                    }
+                ]
+            ]
+        },
+        {
+            "key": "field_service_spec_anesthesia",
+            "label": "Anesthesia Type",
+            "name": "service_spec_anesthesia",
+            "type": "text",
+            "default_value": "Local / Tumescent",
+            "placeholder": "Local / Tumescent",
+            "instructions": "Type of anesthesia used.",
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_service_cta_type",
+                        "operator": "==",
+                        "value": "page"
+                    }
+                ]
+            ]
+        },
+        {
+            "key": "field_service_spec_stay",
+            "label": "Hospital Stay",
+            "name": "service_spec_stay",
+            "type": "text",
+            "default_value": "Day Care / Same Day",
+            "placeholder": "Day Care / Same Day",
+            "instructions": "Length of hospital stay.",
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_service_cta_type",
+                        "operator": "==",
+                        "value": "page"
+                    }
+                ]
+            ]
+        },
+        {
+            "key": "field_service_spec_recovery",
+            "label": "Recovery Time",
+            "name": "service_spec_recovery",
+            "type": "text",
+            "default_value": "Resume daily activities in 24–48 hrs",
+            "placeholder": "Resume daily activities in 24–48 hrs",
+            "instructions": "Expected recovery timeline.",
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_service_cta_type",
+                        "operator": "==",
+                        "value": "page"
+                    }
+                ]
+            ]
+        },
+        {
+            "key": "field_service_symptoms",
+            "label": "Symptoms & Indications (Who Needs This)",
+            "name": "service_symptoms",
+            "type": "textarea",
+            "rows": 4,
+            "instructions": "Enter bullet points (one per line) of common symptoms, clinical indicators, or reasons for this procedure.",
+            "placeholder": "• Visible twisted, bulging leg veins\n• Heaviness, throbbing, or aching in legs\n• Ankle swelling that worsens after standing\n• Skin discoloration or venous ulcers",
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_service_cta_type",
+                        "operator": "==",
+                        "value": "page"
+                    }
+                ]
+            ]
+        },
+        {
+            "key": "field_service_treatment_steps",
+            "label": "Procedure Steps / Treatment Process",
+            "name": "service_treatment_steps",
+            "type": "repeater",
+            "layout": "block",
+            "button_label": "Add Step",
+            "sub_fields": [
+                {
+                    "key": "field_step_title",
+                    "label": "Step Title",
+                    "name": "step_title",
+                    "type": "text",
+                    "placeholder": "e.g. Ultrasound Mapping & Local Anesthesia"
+                },
+                {
+                    "key": "field_step_desc",
+                    "label": "Step Description",
+                    "name": "step_desc",
+                    "type": "textarea",
+                    "rows": 2,
+                    "placeholder": "e.g. High-resolution duplex Doppler is performed to map the faulty vein valves with millimeter accuracy."
+                }
+            ],
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_service_cta_type",
+                        "operator": "==",
+                        "value": "page"
+                    }
+                ]
+            ]
+        },
+        {
+            "key": "field_service_benefits",
+            "label": "Key Clinical Advantages / Benefits",
+            "name": "service_benefits",
+            "type": "textarea",
+            "rows": 4,
+            "instructions": "Enter bullet points (one per line) highlighting advantages (e.g. No scars, 98% success rate, walk home same day).",
+            "placeholder": "• Pin-hole procedure — zero cuts, zero stitches, zero scars\n• Performed under pure local anesthesia\n• Walk-in, walk-out same-day discharge\n• High clinical success rate with immediate relief",
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_service_cta_type",
+                        "operator": "==",
+                        "value": "page"
+                    }
+                ]
+            ]
+        },
+        {
+            "key": "field_service_faqs",
+            "label": "Procedure FAQs",
+            "name": "service_faqs",
+            "type": "repeater",
+            "layout": "block",
+            "button_label": "Add FAQ",
+            "sub_fields": [
+                {
+                    "key": "field_faq_question",
+                    "label": "Question",
+                    "name": "faq_question",
+                    "type": "text",
+                    "placeholder": "e.g. Is laser varicose vein surgery painful?"
+                },
+                {
+                    "key": "field_faq_answer",
+                    "label": "Answer",
+                    "name": "faq_answer",
+                    "type": "textarea",
+                    "rows": 3,
+                    "placeholder": "e.g. The procedure is performed under local tumescent anesthesia and causes minimal to no discomfort."
+                }
+            ],
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_service_cta_type",
+                        "operator": "==",
+                        "value": "page"
+                    }
+                ]
+            ]
+        },
+        {
+            "key": "field_service_main_image",
+            "label": "Main Clinical Feature Image",
+            "name": "service_main_image",
+            "type": "image",
+            "return_format": "array",
+            "preview_size": "medium",
+            "instructions": "Upload the main clinical or illustrative image for this service.",
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_service_cta_type",
+                        "operator": "==",
+                        "value": "page"
+                    }
+                ]
+            ]
+        },
+        {
+            "key": "field_service_gallery",
+            "label": "Procedure Photo Gallery",
+            "name": "service_gallery",
+            "type": "gallery",
+            "return_format": "array",
+            "preview_size": "medium",
+            "instructions": "Upload a photo gallery of clinical equipment, technology, or procedure steps.",
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_service_cta_type",
+                        "operator": "==",
+                        "value": "page"
                     }
                 ]
             ]

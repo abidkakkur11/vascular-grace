@@ -53,7 +53,12 @@ if ( $services_query->have_posts() ) :
                 <h3 class="service-title"><?php echo esc_html( $service_title ); ?></h3>
                 <p class="service-text"><?php echo esc_html( $service_oneliner ); ?></p>
 
-                <?php if ( 'url' === $cta_type && ! empty( $cta_url ) ) : ?>
+                <?php if ( 'page' === $cta_type ) : ?>
+                    <a href="<?php the_permalink(); ?>" class="service-link text-blue">
+                        <?php esc_html_e( 'Learn more', 'vascular-grace' ); ?>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="arrow"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </a>
+                <?php elseif ( 'url' === $cta_type && ! empty( $cta_url ) ) : ?>
                     <a href="<?php echo esc_url( $cta_url ); ?>" class="service-link text-blue">
                         <?php esc_html_e( 'Learn more', 'vascular-grace' ); ?>
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="arrow"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
@@ -61,7 +66,7 @@ if ( $services_query->have_posts() ) :
                 <?php else : ?>
                     <!-- Default: open booking modal — matches original HTML behavior -->
                     <div class="service-link text-blue" role="button" tabindex="0" data-open-modal="appointment" style="cursor:pointer;">
-                        <?php esc_html_e( 'Learn more', 'vascular-grace' ); ?>
+                        <?php esc_html_e( 'Discuss with Doctor', 'vascular-grace' ); ?>
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="arrow"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
                     </div>
                 <?php endif; ?>
@@ -82,7 +87,12 @@ if ( $services_query->have_posts() ) :
                 <h2 class="service-card-title font-display"><?php echo esc_html( $service_title ); ?></h2>
                 <p class="service-card-desc"><?php echo esc_html( $service_oneliner ); ?></p>
 
-                <?php if ( 'url' === $cta_type && ! empty( $cta_url ) ) : ?>
+                <?php if ( 'page' === $cta_type ) : ?>
+                    <a href="<?php the_permalink(); ?>" class="service-discuss-link">
+                        <?php esc_html_e( 'View Full Procedure', 'vascular-grace' ); ?>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                    </a>
+                <?php elseif ( 'url' === $cta_type && ! empty( $cta_url ) ) : ?>
                     <a href="<?php echo esc_url( $cta_url ); ?>" class="service-discuss-link">
                         <?php esc_html_e( 'Discuss with the doctor', 'vascular-grace' ); ?>
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>

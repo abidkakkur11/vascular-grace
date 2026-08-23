@@ -68,11 +68,19 @@ $blog_query = new WP_Query( array(
                 <div class="blog-grid">
                     <?php while ( $blog_query->have_posts() ) : $blog_query->the_post(); ?>
                         <article class="blog-card" id="post-<?php the_ID(); ?>">
-                            <?php if ( has_post_thumbnail() ) : ?>
-                                <a href="<?php the_permalink(); ?>" class="blog-card-image-link" tabindex="-1" aria-hidden="true">
+                            <a href="<?php the_permalink(); ?>" class="blog-card-image-link" tabindex="-1" aria-hidden="true">
+                                <?php if ( has_post_thumbnail() ) : ?>
                                     <?php the_post_thumbnail( 'medium_large', array( 'class' => 'blog-card-image' ) ); ?>
-                                </a>
-                            <?php endif; ?>
+                                <?php else : ?>
+                                    <div class="blog-placeholder-art">
+                                        <svg class="blog-placeholder-svg" viewBox="0 0 100 60" fill="none">
+                                            <path d="M0 30 Q25 10 50 30 T100 30" stroke="rgba(205,36,60,0.4)" stroke-width="2"/>
+                                            <path d="M0 35 Q25 55 50 35 T100 35" stroke="rgba(55,91,182,0.4)" stroke-width="2"/>
+                                        </svg>
+                                        <span class="blog-placeholder-text font-display"><?php echo esc_html( vg_option( 'doctor_name_full', 'Dr. S Srikanth Raju' ) ); ?></span>
+                                    </div>
+                                <?php endif; ?>
+                            </a>
                             <div class="blog-card-body">
                                 <div class="blog-card-meta text-muted text-sm">
                                     <time datetime="<?php echo esc_attr( get_the_date( 'Y-m-d' ) ); ?>"><?php echo esc_html( get_the_date() ); ?></time>

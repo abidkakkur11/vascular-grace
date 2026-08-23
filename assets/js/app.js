@@ -39,6 +39,11 @@ document.addEventListener('DOMContentLoaded', () => {
         if (mobileBackdrop) {
             mobileBackdrop.addEventListener('click', closeMobileNav);
         }
+
+        const mobileNavCloseBtn = document.getElementById('mobile-nav-close-btn');
+        if (mobileNavCloseBtn) {
+            mobileNavCloseBtn.addEventListener('click', closeMobileNav);
+        }
         
         // Close mobile nav when clicking any link inside
         const mobileLinks = mobileNav.querySelectorAll('a');
@@ -220,18 +225,40 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 3) Service "Learn more" and "Discuss with the doctor" cards/links
-    document.querySelectorAll('.service-card, .service-link, .service-discuss-link').forEach(serviceEl => {
-        serviceEl.addEventListener('click', function(e) {
-            // Find service title
-            let serviceTitle = '';
-            const parentCard = this.closest('.service-card') || this.closest('.service-listing-card') || this;
-            const titleEl = parentCard.querySelector('.service-title, .service-card-title, h3, h2');
-            if (titleEl) {
-                serviceTitle = titleEl.textContent.trim();
+    // 3) Service Card interactions (respects standalone procedure page vs modal popup)
+    document.querySelectorAll('.service-card, .service-listing-card').forEach(card => {
+        card.addEventListener('click', function(e) {
+            // If the user clicked directly on an <a> link
+            const clickedLink = e.target.closest('a');
+            if (clickedLink) {
+                const href = clickedLink.getAttribute('href') || '';
+                // If it is a real URL link, let the browser navigate normally
+                if (href && !href.startsWith('#') && !clickedLink.hasAttribute('data-open-modal')) {
+                    return; // Normal page navigation
+                }
             }
-            e.preventDefault();
-            openAppointmentModal(serviceTitle);
+
+            // Check if this card is configured with a standalone procedure page link
+            const standaloneLink = this.querySelector('a.service-link, a.service-discuss-link, a[href]:not([href^="#"]):not([data-open-modal])');
+            if (standaloneLink && standaloneLink.href && !standaloneLink.getAttribute('href').startsWith('#')) {
+                // If user clicked elsewhere on the card (not on a button/modal trigger), navigate to page
+                if (!e.target.closest('button, [data-open-modal]')) {
+                    window.location.href = standaloneLink.href;
+                }
+                return;
+            }
+
+            // Otherwise, if the card has a modal trigger (default behavior)
+            const modalTrigger = this.querySelector('[data-open-modal="appointment"]') || this.hasAttribute('data-open-modal');
+            if (modalTrigger) {
+                let serviceTitle = '';
+                const titleEl = this.querySelector('.service-title, .service-card-title, h3, h2');
+                if (titleEl) {
+                    serviceTitle = titleEl.textContent.trim();
+                }
+                e.preventDefault();
+                openAppointmentModal(serviceTitle);
+            }
         });
     });
 

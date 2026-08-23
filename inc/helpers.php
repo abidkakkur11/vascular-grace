@@ -294,6 +294,20 @@ function vg_get_gmb_review_url() {
 	return 'https://www.google.com/search?q=Dr.+S+Srikanth+Raju+Vascular+Surgeon+Yashoda+Hospitals+Hitec+City';
 }
 
+/**
+ * Calculate estimated reading time for a post.
+ *
+ * @param int|null $post_id Post ID.
+ * @return string
+ */
+function vg_get_reading_time( $post_id = null ) {
+	$content    = get_post_field( 'post_content', $post_id );
+	$word_count = str_word_count( strip_tags( (string) $content ) );
+	$minutes    = max( 1, (int) ceil( $word_count / 200 ) );
+	/* translators: %d: number of minutes */
+	return sprintf( _n( '%d min read', '%d min read', $minutes, 'vascular-grace' ), $minutes );
+}
+
 
 
 

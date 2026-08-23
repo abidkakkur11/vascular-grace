@@ -65,25 +65,33 @@ $paged = get_query_var( 'paged' ) ?: 1;
                 <div class="blog-grid">
                     <?php while ( have_posts() ) : the_post(); ?>
                         <article class="blog-card" id="post-<?php the_ID(); ?>">
-                            <?php if ( has_post_thumbnail() ) : ?>
-                                <a href="<?php the_permalink(); ?>" class="blog-card-image-link" tabindex="-1" aria-hidden="true">
+                            <a href="<?php the_permalink(); ?>" class="blog-card-image-link" tabindex="-1" aria-hidden="true">
+                                <?php if ( has_post_thumbnail() ) : ?>
                                     <?php the_post_thumbnail( 'medium_large', array( 'class' => 'blog-card-image' ) ); ?>
-                                </a>
-                            <?php endif; ?>
+                                <?php else : ?>
+                                    <div class="blog-placeholder-art">
+                                        <svg class="blog-placeholder-svg" viewBox="0 0 100 60" fill="none">
+                                            <path d="M0 30 Q25 10 50 30 T100 30" stroke="rgba(205,36,60,0.4)" stroke-width="2"/>
+                                            <path d="M0 35 Q25 55 50 35 T100 35" stroke="rgba(55,91,182,0.4)" stroke-width="2"/>
+                                        </svg>
+                                        <span class="blog-placeholder-text font-display"><?php echo esc_html( vg_option( 'doctor_name_full', 'Dr. S Srikanth Raju' ) ); ?></span>
+                                    </div>
+                                <?php endif; ?>
+                            </a>
                             <div class="blog-card-body">
                                 <div class="blog-card-meta text-muted text-sm">
                                     <time datetime="<?php echo esc_attr( get_the_date( 'Y-m-d' ) ); ?>"><?php echo esc_html( get_the_date() ); ?></time>
                                     <?php
                                     $cats = get_the_category();
                                     if ( $cats ) :
-                                        echo ' &middot; <span class="blog-card-cat text-crimson">' . esc_html( $cats[0]->name ) . '</span>';
+                                        echo ' · <span class="blog-card-cat text-crimson">' . esc_html( $cats[0]->name ) . '</span>';
                                     endif;
                                     ?>
                                 </div>
                                 <h2 class="blog-card-title font-display">
                                     <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
                                 </h2>
-                                <p class="blog-card-excerpt"><?php echo wp_trim_words( get_the_excerpt(), 20, '&hellip;' ); ?></p>
+                                <p class="blog-card-excerpt"><?php echo wp_trim_words( get_the_excerpt(), 20, '…' ); ?></p>
                                 <a href="<?php the_permalink(); ?>" class="btn-text text-blue hover-blue-dark">
                                     <?php esc_html_e( 'Read more', 'vascular-grace' ); ?>
                                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>

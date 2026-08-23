@@ -10,13 +10,6 @@
             "placement": "top"
         },
         {
-            "key": "field_hero_subtitle",
-            "label": "Hero Subtitle Label",
-            "name": "hero_subtitle",
-            "type": "text",
-            "default_value": "DEPARTMENT"
-        },
-        {
             "key": "field_hero_title",
             "label": "Hero Title (HTML allowed)",
             "name": "hero_title",
@@ -93,6 +86,77 @@
             "name": "exp_badge_label",
             "type": "text",
             "default_value": "CLINICAL PRACTICE"
+        },
+        {
+            "key": "field_about_card_media_type",
+            "label": "About Card Media Type",
+            "name": "about_card_media_type",
+            "type": "select",
+            "choices": {
+                "default": "Default (Animated Vascular Curves Graphic)",
+                "image": "Custom Photo / Image",
+                "video": "Custom Video (MP4 / WebM)"
+            },
+            "default_value": "default",
+            "allow_null": 0,
+            "multiple": 0,
+            "return_format": "value",
+            "instructions": "Choose whether to display the default animated graphic, a custom photo, or a background video in the About card."
+        },
+        {
+            "key": "field_about_card_image",
+            "label": "About Card Image",
+            "name": "about_card_image",
+            "type": "image",
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all",
+            "instructions": "Upload custom photo (portrait or square 4:5 / 1:1 ratio recommended).",
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_about_card_media_type",
+                        "operator": "==",
+                        "value": "image"
+                    }
+                ]
+            ]
+        },
+        {
+            "key": "field_about_card_video",
+            "label": "About Card Video File",
+            "name": "about_card_video",
+            "type": "file",
+            "return_format": "array",
+            "library": "all",
+            "instructions": "Upload an MP4 or WebM video file (plays muted and looped automatically).",
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_about_card_media_type",
+                        "operator": "==",
+                        "value": "video"
+                    }
+                ]
+            ]
+        },
+        {
+            "key": "field_about_card_video_poster",
+            "label": "About Card Video Poster Image",
+            "name": "about_card_video_poster",
+            "type": "image",
+            "return_format": "array",
+            "preview_size": "medium",
+            "instructions": "Optional poster image shown while video loads.",
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_about_card_media_type",
+                        "operator": "==",
+                        "value": "video"
+                    }
+                ]
+            ]
         },
         {
             "key": "field_home_tab_services",

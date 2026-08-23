@@ -1,7 +1,13 @@
     <!-- Footer -->
+    <?php
+    $footer_cols   = vg_option( 'footer_columns_count', '3' );
+    $show_services = vg_option( 'footer_show_services', false );
+    $is_4_cols     = ( '4' === (string) $footer_cols || $show_services );
+    $grid_class    = $is_4_cols ? 'cols-4' : 'cols-3';
+    ?>
     <footer class="footer bg-dark-deep text-white">
         <div class="container py-large">
-            <div class="footer-grid">
+            <div class="footer-grid <?php echo esc_attr( $grid_class ); ?>">
 
                 <!-- Brand Column -->
                 <div class="footer-col brand-col">
@@ -52,7 +58,8 @@
                     <?php endif; ?>
                 </div>
 
-                <!-- Services Quick Links -->
+                <?php if ( $is_4_cols ) : ?>
+                <!-- Services Quick Links (Optional 4th Column) -->
                 <div class="footer-col">
                     <h4 class="footer-heading"><?php esc_html_e( 'Services', 'vascular-grace' ); ?></h4>
                     <ul class="footer-links">
@@ -91,6 +98,7 @@
                         ?>
                     </ul>
                 </div>
+                <?php endif; ?>
 
                 <!-- Practice Info -->
                 <div class="footer-col">
@@ -116,6 +124,9 @@
             <!-- Footer Bottom Bar -->
             <div class="footer-bottom flex-between border-t border-muted pt-6 mt-12 text-sm text-muted">
                 <p><?php vg_the_text( 'copyright_text', 'option', '© 2026 Dr. S Srikanth Raju · Med Reg No. TSMC 67043. All rights reserved.' ); ?></p>
+                <div class="footer-watermark">
+                    <span><?php esc_html_e( 'Handcrafted with', 'vascular-grace' ); ?> <span class="footer-heart">♥</span> <?php esc_html_e( 'by', 'vascular-grace' ); ?> <a href="https://abidkp.com" target="_blank" rel="noopener noreferrer" class="footer-author-link">Abid KP</a></span>
+                </div>
                 <div class="footer-bottom-links">
                     <a href="<?php vg_the_url( 'privacy_policy_url', 'option', '#' ); ?>"><?php esc_html_e( 'Privacy Policy', 'vascular-grace' ); ?></a>
                     <span class="mx-2">|</span>
