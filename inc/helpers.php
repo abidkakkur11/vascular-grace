@@ -231,6 +231,12 @@ function vg_get_video_thumbnail( $video_url = '', $custom_thumb = null ) {
 		if ( is_array( $custom_thumb ) && ! empty( $custom_thumb['url'] ) ) {
 			return esc_url( $custom_thumb['url'] );
 		}
+		if ( is_numeric( $custom_thumb ) ) {
+			$img_url = wp_get_attachment_image_url( (int) $custom_thumb, 'large' );
+			if ( $img_url ) {
+				return esc_url( $img_url );
+			}
+		}
 		if ( is_string( $custom_thumb ) && ! empty( $custom_thumb ) ) {
 			return esc_url( $custom_thumb );
 		}
